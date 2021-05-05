@@ -1,38 +1,39 @@
 package Main;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sceneUtils.SceneManager;
 
 import java.io.IOException;
 
-/**
- * JavaFX App
- */
 public class App extends Application {
 
-    private static Scene scene;
-
+    private Stage stage;
+    private static App instance;
+    public static void main(String[] args) { launch(args); }
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
-        stage.setScene(scene);
+        this.stage = stage;
+        instance = this;
+
+        // Initialize all scenes
+        SceneManager.getInstance();
+
+        //Choose first appearing scene
+        stage.setScene(SceneManager.getInstance().getScene(SceneManager.SceneType.PRIMARY));
+
+        stage.setResizable(false);
+        stage.setTitle("WeddApp");
+
         stage.show();
     }
-
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    public static App getI() {
+        return instance;
     }
 
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
-
-    public static void main(String[] args) {
-        launch();
+    public void changeSceneOnMainStage(SceneManager.SceneType sceneType)
+    {
+        stage.setScene(SceneManager.getInstance().getScene(sceneType));
     }
 
 }
