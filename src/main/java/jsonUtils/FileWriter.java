@@ -1,4 +1,8 @@
 package jsonUtils;
+import exceptions.CouldNotWriteUsersException;
+import exceptions.CredentialsAreNullException;
+import exceptions.InvalidPhoneNumberException;
+import exceptions.UsernameAlreadyExistsException;
 import model.*;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -11,8 +15,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class FileWriter
 {
@@ -48,18 +52,46 @@ public class FileWriter
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(GuestPATH.toFile(), guests);
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(OrganizerPATH.toFile(), organizers);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new CouldNotWriteUsersException();
         }
     }
 
-    public static void addUser(User u)
-    {
+    public static void addUser(User u) throws UsernameAlreadyExistsException,CredentialsAreNullException , InvalidPhoneNumberException {
+        checkCredentialsAreNotNull(u);
+        checkUserDoesNotAlreadyExist(u.getUsername());
+        checkPhoneNumber(u.getTel());
         u.setPassword(encodePassword(u.getUsername(),u.getPassword()));
         if(u instanceof Guest)
             guests.add((Guest) u);
         else if(u instanceof Organizer)
             organizers.add((Organizer) u);
         persistUsers();
+    }
+
+    private static void checkPhoneNumber(String tel) throws InvalidPhoneNumberException {
+        if(tel.length()!=10)
+            throw new InvalidPhoneNumberException();
+        for(int i=0;i<10;i++)
+        {
+            if(tel.charAt(i)<'0' || tel.charAt(i)>'9')
+                throw new InvalidPhoneNumberException();
+        }
+
+    }
+
+    private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
+        for (Guest user : guests) {
+            if (Objects.equals(username, user.getUsername()))
+                throw new UsernameAlreadyExistsException(username);
+        }
+        for (Organizer user : organizers) {
+            if (Objects.equals(username, user.getUsername()))
+                throw new UsernameAlreadyExistsException(username);
+        }
+    }
+    private static void checkCredentialsAreNotNull(User u) throws CredentialsAreNullException {
+        if(u.getUsername()=="" || u.getEmail()=="" || u.getTel()=="" || u.getSurname()==""|| u.getName()==""|| u.getPassword()=="")
+            throw new CredentialsAreNullException();
     }
     private static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();

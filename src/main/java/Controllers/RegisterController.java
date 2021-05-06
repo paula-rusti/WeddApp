@@ -3,6 +3,9 @@ package Controllers;
 import Main.App;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import exceptions.CredentialsAreNullException;
+import exceptions.InvalidPhoneNumberException;
+import exceptions.UsernameAlreadyExistsException;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -44,13 +47,29 @@ public class RegisterController implements Initializable
     {
         role.getItems().addAll("Guest", "Organizer");
         backButton.setOnAction(e -> App.getI().changeSceneOnMainStage(SceneManager.SceneType.PRIMARY));
-        regButton.setOnAction(e->handleRegistration());
+        regButton.setOnAction(e-> {
+            try {
+                handleRegistration();
+                message.setText("Account created successfully");
+            }catch (CredentialsAreNullException ex1){
+                message.setText(ex1.getMessage());
+            } catch (UsernameAlreadyExistsException exception) {
+                message.setText(exception.getMessage());
+            }catch (InvalidPhoneNumberException e2) {
+                message.setText(e2.getMessage());
+            }
+        });
 
     }
-    public void handleRegistration(){
+    public void handleRegistration() throws UsernameAlreadyExistsException,CredentialsAreNullException,InvalidPhoneNumberException {
+        if(role.getValue()==null)
+            throw new CredentialsAreNullException();
         String s= (String)role.getValue();
-        if(s.equals("Guest"))
-            FileWriter.addUser(new Guest(username.getText(), name.getText(), surname.getText(), tel.getText(), email.getText(), password.getText()));
-        else FileWriter.addUser(new Organizer(username.getText(), name.getText(), surname.getText(), tel.getText(), email.getText(), password.getText()));
+            if (s.equals("Guest"))
+                FileWriter.addUser(new Guest(username.getText(), name.getText(), surname.getText(), tel.getText(), email.getText(), password.getText()));
+            else
+                FileWriter.addUser(new Organizer(username.getText(), name.getText(), surname.getText(), tel.getText(), email.getText(), password.getText()));
+
     }
 }
+
