@@ -77,6 +77,7 @@ public abstract class User
 
         User user = (User) o;
 
+        if (!username.equals(user.username)) return false;
         if (!name.equals(user.name)) return false;
         if (!surname.equals(user.surname)) return false;
         if (!email.equals(user.email)) return false;

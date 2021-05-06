@@ -4,6 +4,7 @@ module org.example {
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.databind;
     requires commons.io;
+    requires com.jfoenix;
 
     opens Main to javafx.fxml;
     opens Controllers to javafx.fxml;

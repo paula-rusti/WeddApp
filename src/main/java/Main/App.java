@@ -32,8 +32,8 @@ public class App extends Application {
         stage.show();
 
         FileWriter.loadUsersFromFile();
-        FileWriter.addUser(new Organizer("a", "a", "a", "a", "a", "a"));    //edit the list in memory
-        FileWriter.persistUsers();  //write it to the file
+        //FileWriter.addUser(new Organizer("a", "a", "a", "a", "a", "a"));    //edit the list in memory
+        //FileWriter.persistUsers();  //write it to the file
     }
     public static App getI() {
         return instance;
