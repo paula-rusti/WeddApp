@@ -1,8 +1,5 @@
 package jsonUtils;
-import exceptions.CouldNotWriteUsersException;
-import exceptions.CredentialsAreNullException;
-import exceptions.InvalidPhoneNumberException;
-import exceptions.UsernameAlreadyExistsException;
+import exceptions.*;
 import model.*;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -60,6 +57,8 @@ public class FileWriter
         checkCredentialsAreNotNull(u);
         checkUserDoesNotAlreadyExist(u.getUsername());
         checkPhoneNumber(u.getTel());
+        checkValidUsername(u.getUsername());
+        checkValidPassword(u.getPassword());
         u.setPassword(encodePassword(u.getUsername(),u.getPassword()));
         if(u instanceof Guest)
             guests.add((Guest) u);
@@ -67,6 +66,36 @@ public class FileWriter
             organizers.add((Organizer) u);
         persistUsers();
     }
+
+    private static void checkValidPassword(String password) throws InvalidCredentialsException{
+        if(!checkLengthUppercaseSpace(password))
+            throw new InvalidCredentialsException("Password");
+
+    }
+    private static void checkValidUsername(String username) throws InvalidCredentialsException {
+        if(!checkLengthUppercaseSpace(username))
+            throw new InvalidCredentialsException("Username");
+
+    }
+    public static boolean checkLengthUppercaseSpace(String str)
+    {
+        boolean uppercase=false;
+        boolean space=false;
+        if(str.length()<8)
+            return false;
+        for(int i=0;i<str.length();i++) {
+            if(Character.isUpperCase(str.charAt(i)))
+                uppercase=true;
+            if(Character.isSpaceChar(str.charAt(i)))
+                space=true;
+        }
+        if(uppercase==false || space==true)
+            return false;
+        return true;
+
+    }
+
+
 
     private static void checkPhoneNumber(String tel) throws InvalidPhoneNumberException {
         if(tel.length()!=10)

@@ -5,8 +5,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import exceptions.CredentialsAreNullException;
 import exceptions.InvalidPhoneNumberException;
+import exceptions.InvalidCredentialsException;
 import exceptions.UsernameAlreadyExistsException;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -58,10 +58,13 @@ public class RegisterController implements Initializable
             }catch (InvalidPhoneNumberException e2) {
                 message.setText(e2.getMessage());
             }
+            catch (InvalidCredentialsException e3) {
+                message.setText(e3.getMessage());
+            }
         });
 
     }
-    public void handleRegistration() throws UsernameAlreadyExistsException,CredentialsAreNullException,InvalidPhoneNumberException {
+    public void handleRegistration() throws UsernameAlreadyExistsException,CredentialsAreNullException,InvalidPhoneNumberException, InvalidCredentialsException {
         if(role.getValue()==null)
             throw new CredentialsAreNullException();
         String s= (String)role.getValue();
