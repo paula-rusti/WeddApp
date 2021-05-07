@@ -26,7 +26,7 @@ public class App extends Application {
         //Choose first appearing scene
         stage.setScene(SceneManager.getInstance().getScene(SceneManager.SceneType.PRIMARY));
 
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.setTitle("WeddApp");
 
         stage.show();
