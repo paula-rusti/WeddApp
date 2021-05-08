@@ -94,5 +94,11 @@ public abstract class User
         this.username = username;
     }
 
+    @Override
+    public String toString()
+    {
+        return "username: " + username + " name: " + name + " surname: " + surname + " email: " + email + " tel: " + tel + " password:***" + " role: " + role;
+    }
+
     //TODO add tostring
 }

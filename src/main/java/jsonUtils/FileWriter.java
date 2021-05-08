@@ -31,17 +31,6 @@ public class FileWriter
     private static Map<String, User> userMap=new HashMap<>();
 
     public static void loadDataFromFile() throws IOException   //loads data from file in the class lists
-    public static List<Organizer> getOrganizers()
-    {
-        return organizers;
-    }
-
-    public static List<Guest> getGuests()
-    {
-        return guests;
-    }
-
-    public static void loadUsersFromFile() throws IOException   //loads data from file in the class lists
     {
 
         if (!Files.exists(GuestPATH)) {
@@ -63,6 +52,7 @@ public class FileWriter
         weddings = objectMapper.readValue(WeddingPATH.toFile(), new TypeReference<List<Wedding>>() {
         });
 
+        //populate the hash map with users
         for(var temp : organizers)
         {
             userMap.put(temp.getUsername(), temp);
@@ -95,8 +85,6 @@ public class FileWriter
         }
     }
 
-    public static void addUser(User u)
-    {
     public static void addUser(User u) throws UsernameAlreadyExistsException,CredentialsAreNullException , InvalidPhoneNumberException {
         RegisterValidation.checkCredentialsAreNotNull(u);
         RegisterValidation.checkUserDoesNotAlreadyExist(u.getUsername());

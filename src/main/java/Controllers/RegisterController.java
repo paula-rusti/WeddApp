@@ -54,7 +54,7 @@ public class RegisterController implements Initializable
             tel.clear();
             email.clear();
             password.clear();
-            role.getItems().clear();
+            //role.setSelectionModel(-1);   I don't know how to reset this
             message.setText("");
         });
         regButton.setOnAction(e-> {

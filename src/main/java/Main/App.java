@@ -18,10 +18,6 @@ public class App extends Application {
     private static App instance;
     public static void main(String[] args) { launch(args); }
 
-//    public static List<Organizer> organizers;
-//    public static List<Guest> guests;
-//    public static List<Wedding> weddings;
-
     public static Map<String, User> userMap=new HashMap<>();
 
     @Override
@@ -31,11 +27,8 @@ public class App extends Application {
 
         //load users from file in the arrays to have them globally available;
         FileWriter.loadDataFromFile();
-//        organizers=FileWriter.getOrganizers();
-//        guests=FileWriter.getGuests();
-//        weddings=FileWriter.getWeddings();
-
         userMap=FileWriter.getUserMap();
+
         //iterate over hash map
         Iterator it = userMap.entrySet().iterator();
         while (it.hasNext())
@@ -55,10 +48,6 @@ public class App extends Application {
         stage.setTitle("WeddApp");
 
         stage.show();
-
-        FileWriter.loadUsersFromFile();
-        FileWriter.addUser(new Organizer("a", "a", "a", "a", "a", "a"));    //edit the list in memory
-        FileWriter.persistUsers();  //write it to the file
     }
 
     public static App getI() {
