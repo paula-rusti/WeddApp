@@ -46,7 +46,17 @@ public class RegisterController implements Initializable
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
         role.getItems().addAll("Guest", "Organizer");
-        backButton.setOnAction(e -> App.getI().changeSceneOnMainStage(SceneManager.SceneType.PRIMARY));
+        backButton.setOnAction(e -> {
+            App.getI().changeSceneOnMainStage(SceneManager.SceneType.PRIMARY);
+            username.clear();
+            name.clear();
+            surname.clear();
+            tel.clear();
+            email.clear();
+            password.clear();
+            role.getItems().clear();
+            message.setText("");
+        });
         regButton.setOnAction(e-> {
             try {
                 handleRegistration();
