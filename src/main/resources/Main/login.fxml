@@ -26,11 +26,11 @@
                   <TextField fx:id="username" layoutX="135.0" layoutY="112.0" promptText="Username" />
                   <PasswordField fx:id="password" layoutX="135.0" layoutY="157.0" promptText="Password" />
                   <JFXComboBox fx:id="role" focusColor="#82e8df" layoutX="246.0" layoutY="203.0" prefHeight="26.0" prefWidth="125.0" promptText="Role" unFocusColor="WHITE" />
-<<<<<<< HEAD
+
+                  <JFXButton fx:id="loginButton" buttonType="RAISED" layoutX="112.0" layoutY="248.0" prefHeight="26.0" prefWidth="221.0" ripplerFill="WHITE" style="-fx-background-color: linear-gradient(to left,#6DFFE2,#9BE8FF);" text="Login" textFill="WHITE" />
+
                   <JFXButton fx:id="loginButton" buttonType="RAISED" layoutX="112.0" layoutY="248.0" prefHeight="26.0" prefWidth="221.0" ripplerFill="WHITE" style="-fx-background-color: linear-gradient(to left,#6DFFE2,#9BE8FF);" text="Login" textFill="WHITE">
-=======
-                  <JFXButton fx:id="regButton" buttonType="RAISED" layoutX="112.0" layoutY="248.0" prefHeight="26.0" prefWidth="221.0" ripplerFill="WHITE" style="-fx-background-color: linear-gradient(to left,#6DFFE2,#9BE8FF);" text="Login" textFill="WHITE">
->>>>>>> Login
+
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -40,10 +40,8 @@
                         <Font name="System Bold" size="31.0" />
                      </font>
                   </Label>
-<<<<<<< HEAD
-=======
-                  <Label fx:id="message" alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="359.0" prefHeight="26.0" prefWidth="419.0" textAlignment="CENTER" wrapText="true" />
->>>>>>> Login
+                  <Label fx:id="message" alignment="CENTER" contentDisplay="CENTER" layoutY="330.0" prefHeight="26.0" prefWidth="419.0" textAlignment="CENTER" wrapText="true" />
+
                   <JFXButton fx:id="backButton" text="⮜">
                      <font>
                         <Font size="16.0" />
@@ -65,11 +63,9 @@
                         </LinearGradient>
                      </ripplerFill>
                   </JFXButton>
-<<<<<<< HEAD
-                  <Label fx:id="message" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="325.0" prefHeight="26.0" prefWidth="419.0" textAlignment="CENTER" wrapText="true" />
-=======
-                  <Label fx:id="message1" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="325.0" prefHeight="26.0" prefWidth="419.0" textAlignment="CENTER" wrapText="true" />
->>>>>>> Login
+
+
+
                </children>
             </Pane>
          </children>

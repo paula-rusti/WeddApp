@@ -18,8 +18,6 @@ public class App extends Application {
     private static App instance;
     public static void main(String[] args) { launch(args); }
 
-    public static Map<String, User> userMap=new HashMap<>();
-
     @Override
     public void start(Stage stage) throws IOException {
         this.stage = stage;
@@ -27,12 +25,12 @@ public class App extends Application {
 
         //load users from file in the arrays to have them globally available;
         FileWriter.loadDataFromFile();
-        userMap=FileWriter.getUserMap();
+
 
         //from now use FileWriter.list instead
 
         //iterate over hash map
-//        Iterator it = userMap.entrySet().iterator();
+//        Iterator it = FileWriter.userMap.entrySet().iterator();
 //        while (it.hasNext())
 //        {
 //            Map.Entry pair = (Map.Entry)it.next();

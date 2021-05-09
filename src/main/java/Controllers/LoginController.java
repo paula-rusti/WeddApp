@@ -51,9 +51,30 @@ public class LoginController implements Initializable
 
     public void loginButtonClicked()
     {
+        System.out.println("here!!!!!!!");
         try {
             handleLogin();
             message.setText("Login Successful!");
+
+            //redirect behavior
+            String s = (String)role.getValue();
+            if(s.equals("Guest"))
+                App.getI().changeSceneOnMainStage(SceneManager.SceneType.GUEST_MAIN);
+            else
+            {
+                //we need to see if the organizer has created a wedding or not
+                if(FileWriter.wedMap.get(username.getText())==null)
+                {
+                    System.out.println("no wed for username");
+                    App.getI().changeSceneOnMainStage(SceneManager.SceneType.ORG_NO_WED);
+                }
+                else
+                {
+                    System.out.println("wed found for username");
+                    App.getI().changeSceneOnMainStage(SceneManager.SceneType.ORG_WED);
+                }
+            }
+
         }catch (CredentialsAreNullException | IncorrectCredentials e)
         {
             message.setText(e.getMessage());
