@@ -29,14 +29,16 @@ public class App extends Application {
         FileWriter.loadDataFromFile();
         userMap=FileWriter.getUserMap();
 
+        //from now use FileWriter.list instead
+
         //iterate over hash map
-        Iterator it = userMap.entrySet().iterator();
-        while (it.hasNext())
-        {
-            Map.Entry pair = (Map.Entry)it.next();
-            System.out.println(pair.getKey() + "=" + pair.getValue());
-            it.remove();
-        }
+//        Iterator it = userMap.entrySet().iterator();
+//        while (it.hasNext())
+//        {
+//            Map.Entry pair = (Map.Entry)it.next();
+//            System.out.println(pair.getKey() + "=" + pair.getValue());
+//            it.remove();
+//        }
 
         // Initialize all scenes
         SceneManager.getInstance();

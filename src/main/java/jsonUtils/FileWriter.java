@@ -24,10 +24,9 @@ public class FileWriter
     private static final Path OrganizerPATH = FilePath.getPathToFile("config", "organizers.json");
     private static final Path WeddingPATH = FilePath.getPathToFile("config", "weddings.json");
 
-    private static List<Organizer> organizers;      //the lists are edited in memory and then are written to file
-    private static List<Guest> guests;
+    public static List<Organizer> organizers;      //the lists are edited in memory and then are written to file
+    public static List<Guest> guests;
     private static List<Wedding> weddings;
-
     private static Map<String, User> userMap=new HashMap<>();
 
     public static void loadDataFromFile() throws IOException   //loads data from file in the class lists
