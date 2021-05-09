@@ -18,8 +18,6 @@ public class App extends Application {
     private static App instance;
     public static void main(String[] args) { launch(args); }
 
-    public static Map<String, User> userMap=new HashMap<>();
-
     @Override
     public void start(Stage stage) throws IOException {
         this.stage = stage;
@@ -27,22 +25,24 @@ public class App extends Application {
 
         //load users from file in the arrays to have them globally available;
         FileWriter.loadDataFromFile();
-        userMap=FileWriter.getUserMap();
+
+
+        //from now use FileWriter.list instead
 
         //iterate over hash map
-        Iterator it = userMap.entrySet().iterator();
-        while (it.hasNext())
-        {
-            Map.Entry pair = (Map.Entry)it.next();
-            System.out.println(pair.getKey() + "=" + pair.getValue());
-            it.remove();
-        }
+//        Iterator it = FileWriter.userMap.entrySet().iterator();
+//        while (it.hasNext())
+//        {
+//            Map.Entry pair = (Map.Entry)it.next();
+//            System.out.println(pair.getKey() + "=" + pair.getValue());
+//            it.remove();
+//        }
 
         // Initialize all scenes
         SceneManager.getInstance();
 
         //Choose first appearing scene
-        stage.setScene(SceneManager.getInstance().getScene(SceneManager.SceneType.PRIMARY));
+        stage.setScene(SceneManager.getInstance().getScene(SceneManager.SceneType.LOGIN));
 
         stage.setResizable(true);
         stage.setTitle("WeddApp");

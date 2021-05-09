@@ -59,14 +59,12 @@ public class RegisterValidation
     }
 
     public static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
-        List<Guest> guests=FileWriter.getGuests();
-        List<Organizer> organizers=FileWriter.getOrganizers();
 
-        for (Guest user : guests) {
+        for (Guest user : FileWriter.guests) {
             if (Objects.equals(username, user.getUsername()))
                 throw new UsernameAlreadyExistsException(username);
         }
-        for (Organizer user : organizers) {
+        for (Organizer user : FileWriter.organizers) {
             if (Objects.equals(username, user.getUsername()))
                 throw new UsernameAlreadyExistsException(username);
         }

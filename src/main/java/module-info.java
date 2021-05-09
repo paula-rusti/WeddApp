@@ -17,4 +17,5 @@ module org.example {
     exports sceneUtils;
     exports jsonUtils;
     exports model to com.fasterxml.jackson.databind;
+    exports exceptions;
 }

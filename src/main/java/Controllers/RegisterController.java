@@ -47,7 +47,7 @@ public class RegisterController implements Initializable
     {
         role.getItems().addAll("Guest", "Organizer");
         backButton.setOnAction(e -> {
-            App.getI().changeSceneOnMainStage(SceneManager.SceneType.PRIMARY);
+            App.getI().changeSceneOnMainStage(SceneManager.SceneType.LOGIN);
             username.clear();
             name.clear();
             surname.clear();

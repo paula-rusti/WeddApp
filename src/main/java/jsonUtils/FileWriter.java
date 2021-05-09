@@ -8,15 +8,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.FileUtils;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
+
 
 public class FileWriter
 {
@@ -24,11 +21,11 @@ public class FileWriter
     private static final Path OrganizerPATH = FilePath.getPathToFile("config", "organizers.json");
     private static final Path WeddingPATH = FilePath.getPathToFile("config", "weddings.json");
 
-    private static List<Organizer> organizers;      //the lists are edited in memory and then are written to file
-    private static List<Guest> guests;
-    private static List<Wedding> weddings;
-
-    private static Map<String, User> userMap=new HashMap<>();
+    public static List<Organizer> organizers;      //the lists are edited in memory and then are written to file
+    public static List<Guest> guests;
+    public static List<Wedding> weddings;
+    public  static Map<String, User> userMap=new HashMap<>();   //username -> user
+    public static Map<String, Wedding> wedMap=new HashMap<>(); //username -> wedding
 
     public static void loadDataFromFile() throws IOException   //loads data from file in the class lists
     {
@@ -60,6 +57,12 @@ public class FileWriter
         for(var temp : guests)
         {
             userMap.put(temp.getUsername(), temp);
+        }
+
+        //populate the wedmap with <username, wedding>
+        for(var temp : weddings)
+        {
+            wedMap.put(temp.getUsername(), temp);
         }
 
     }
@@ -103,9 +106,4 @@ public class FileWriter
     {
         weddings.add(wed);
     }
-
-    public static List<Organizer> getOrganizers(){return organizers;}
-    public static List<Guest> getGuests(){return guests;}
-    public static List<Wedding> getWeddings(){return weddings;}
-    public static Map<String, User> getUserMap(){return userMap;}
 }
