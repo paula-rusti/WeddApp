@@ -13,8 +13,7 @@ public class SceneManager
 {
     public enum SceneType
     {
-        PRIMARY,
-        SECONDARY,
+        LOGIN,
         REGISTER
     }
 
@@ -27,8 +26,7 @@ public class SceneManager
         sceneMap = new EnumMap<>(SceneType.class);
 
         // Add lines to have each enum covered
-        sceneMap.put(SceneType.PRIMARY, loadScene("/Main/primary.fxml"));
-        sceneMap.put(SceneType.SECONDARY, loadScene("/Main/secondary.fxml"));
+        sceneMap.put(SceneType.LOGIN, loadScene("/Main/login.fxml"));
         sceneMap.put(SceneType.REGISTER, loadScene("/Main/register.fxml"));
 
         // Check that all enums have a loaded scene

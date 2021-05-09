@@ -42,7 +42,7 @@ public class App extends Application {
         SceneManager.getInstance();
 
         //Choose first appearing scene
-        stage.setScene(SceneManager.getInstance().getScene(SceneManager.SceneType.PRIMARY));
+        stage.setScene(SceneManager.getInstance().getScene(SceneManager.SceneType.LOGIN));
 
         stage.setResizable(true);
         stage.setTitle("WeddApp");
