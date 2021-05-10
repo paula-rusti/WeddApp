@@ -1,5 +1,6 @@
 package Main;
 
+import Controllers.OrgNoWedController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import jsonUtils.FileWriter;
@@ -17,6 +18,21 @@ public class App extends Application {
     private Stage stage;
     private static App instance;
     public static void main(String[] args) { launch(args); }
+
+    private static User userLoggedIn=null;
+
+    public static User getUserLoggedIn() {
+        return userLoggedIn;
+    }
+
+    public static void setUserLoggedIn(User userLoggedIn) {
+
+        App.userLoggedIn = userLoggedIn;
+        OrgNoWedController noWedController = SceneManager.getInstance().getController(SceneManager.SceneType.ORG_NO_WED);
+
+        noWedController.setNameLabel(userLoggedIn);     //!!!!!!!!!!!!!!!!!!!
+    }
+
 
     @Override
     public void start(Stage stage) throws IOException {
