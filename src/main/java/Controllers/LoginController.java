@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import jsonUtils.FileWriter;
+import model.User;
 import sceneUtils.SceneManager;
 
 import java.net.URL;
@@ -55,6 +56,8 @@ public class LoginController implements Initializable
         try {
             handleLogin();
             message.setText("Login Successful!");
+            User temp = FileWriter.userMap.get(username.getText());
+            App.setUserLoggedIn(temp);
 
             //redirect behavior
             String s = (String)role.getValue();
