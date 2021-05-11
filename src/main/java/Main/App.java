@@ -26,7 +26,7 @@ public class App extends Application {
         return userLoggedIn;
     }
 
-    public static void setUserLoggedIn(User userLoggedIn) {
+    public static void setUserLoggedIn(User userLoggedIn) {     //when the logout is clicked, this must be set to null or sth like that
 
         App.userLoggedIn = userLoggedIn;
         OrgNoWedController noWedController = SceneManager.getInstance().getController(SceneManager.SceneType.ORG_NO_WED);

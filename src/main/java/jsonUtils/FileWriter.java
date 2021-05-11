@@ -59,12 +59,6 @@ public class FileWriter
             userMap.put(temp.getUsername(), temp);
         }
 
-        //populate the wedmap with <username, wedding>
-        for(var temp : weddings)
-        {
-            wedMap.put(temp.getUsername(), temp);
-        }
-
     }
 
     public static void persistUsers() {    //writes users list to file
@@ -105,5 +99,10 @@ public class FileWriter
     public static void addWedd(Wedding wed)
     {
         weddings.add(wed);
+        //populate the wedmap with <username, wedding>
+        for(var temp : weddings)
+        {
+            wedMap.put(temp.getUsername(), temp);
+        }
     }
 }
