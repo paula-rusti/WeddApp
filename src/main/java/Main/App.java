@@ -7,6 +7,7 @@ import jsonUtils.FileWriter;
 import model.*;
 import sceneUtils.SceneManager;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -30,7 +31,7 @@ public class App extends Application {
         App.userLoggedIn = userLoggedIn;
         OrgNoWedController noWedController = SceneManager.getInstance().getController(SceneManager.SceneType.ORG_NO_WED);
 
-        noWedController.setNameLabel(userLoggedIn);     //!!!!!!!!!!!!!!!!!!!
+        noWedController.setNameLabels(userLoggedIn);     //!!!!!!!!!!!!!!!!!!!
     }
 
 
@@ -42,6 +43,8 @@ public class App extends Application {
         //load users from file in the arrays to have them globally available;
         FileWriter.loadDataFromFile();
 
+//        FileWriter.addWedd(new Wedding(new Date(1,1,2012), "here", 20000, 200, "RustiPaula"));
+//        FileWriter.persistWed();
 
         //from now use FileWriter.list instead
 

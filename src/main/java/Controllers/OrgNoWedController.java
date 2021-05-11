@@ -9,6 +9,8 @@ import model.User;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+//TODO make this fxml look good
+
 public class OrgNoWedController implements Initializable
 {
     @FXML
@@ -16,7 +18,9 @@ public class OrgNoWedController implements Initializable
     @FXML
     private Button backButton;
     @FXML
-    private Label nameLabel;
+    private Label name;
+    @FXML
+    private Label surname;
     @FXML
     private Button createButton;
 
@@ -25,9 +29,10 @@ public class OrgNoWedController implements Initializable
         
     }
 
-    public void setNameLabel(User u){
+    public void setNameLabels(User u){
         if(u==null)
             return;
-        nameLabel.setText(u.getName());
+        name.setText(u.getName());
+        surname.setText(u.getSurname());
     }
 }

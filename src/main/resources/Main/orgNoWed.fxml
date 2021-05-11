@@ -3,19 +3,29 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.OrgNoWedController">
    <children>
       <Button fx:id="manageButton" layoutX="8.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" text="Manage Account" />
       <Button fx:id="backButton" layoutX="534.0" layoutY="361.0" mnemonicParsing="false" text="Back" />
-      <VBox layoutX="453.0" layoutY="6.0" prefHeight="63.0" prefWidth="147.0">
+      <HBox alignment="CENTER" layoutX="356.0" layoutY="7.0" prefHeight="52.0" prefWidth="201.0">
          <children>
-            <Label fx:id="nameLabel" prefHeight="18.0" prefWidth="71.0" text="Name" />
-            <Label prefHeight="18.0" prefWidth="45.0" text="Photo" />
-            <Label prefHeight="18.0" prefWidth="50.0" text="Timer" />
+            <Label fx:id="name" text="Label">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Label>
+            <Region prefHeight="52.0" prefWidth="39.0" />
+            <Label fx:id="surname" text="Label">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
          </children>
-      </VBox>
+      </HBox>
       <Button fx:id="createButton" layoutX="219.0" layoutY="155.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="162.0" text="Create Your Wedding" />
    </children>
 </AnchorPane>
