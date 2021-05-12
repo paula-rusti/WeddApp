@@ -16,7 +16,7 @@ import model.Wedding;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class WedDetailsController implements Initializable {
+public class CreateWedController implements Initializable {
 
     @FXML
     private TextField budget;

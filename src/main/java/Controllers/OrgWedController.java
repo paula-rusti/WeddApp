@@ -1,10 +1,12 @@
 package Controllers;
 
+import Main.App;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import model.User;
+import sceneUtils.SceneManager;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,7 +31,7 @@ public class OrgWedController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+            detailsButton.setOnAction(e -> detailsButtonClicked());
     }
 
     public void setNameLabels(User u){
@@ -37,5 +39,10 @@ public class OrgWedController implements Initializable {
             return;
         name.setText(u.getName());
         surname.setText(u.getSurname());
+    }
+
+    private void detailsButtonClicked()
+    {
+        App.getI().changeSceneOnMainStage(SceneManager.SceneType.WED_DETAILS);
     }
 }

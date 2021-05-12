@@ -56,6 +56,7 @@ public class LoginController implements Initializable
             handleLogin();
             message.setText("Login Successful!");
             User temp = FileWriter.userMap.get(username.getText());
+
             App.setUserLoggedIn(temp);      //sets the user logged in to be the one that logged in now
 
             //redirect behavior

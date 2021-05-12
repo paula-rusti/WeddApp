@@ -1,5 +1,6 @@
 package Main;
 
+import Controllers.ChangeDetailsController;
 import Controllers.OrgNoWedController;
 import Controllers.OrgWedController;
 import javafx.application.Application;
@@ -31,7 +32,8 @@ public class App extends Application {
 
         App.userLoggedIn = userLoggedIn;
 
-        if(userLoggedIn.getRole().equals("Organizer"))
+
+        if(userLoggedIn.getRole().equals("organizer"))
         {
             String username = userLoggedIn.getUsername();
             if(FileWriter.wedMap.get(username)==null)
@@ -43,8 +45,12 @@ public class App extends Application {
             {
                 OrgWedController wedController = SceneManager.getInstance().getController(SceneManager.SceneType.ORG_WED);
                 wedController.setNameLabels(userLoggedIn);     //!!!!!!!!!!!!!!!!!!!
+
+                ChangeDetailsController detailsController = SceneManager.getInstance().getController(SceneManager.SceneType.WED_DETAILS);
+                detailsController.loadDetails(userLoggedIn);
             }
         }
+        else System.out.println("wtf");
 
     }
 

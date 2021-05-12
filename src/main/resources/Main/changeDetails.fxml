@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CreateWedController">
+<BorderPane prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ChangeDetailsController">
    <center>
       <VBox prefHeight="413.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
@@ -64,13 +64,13 @@
       </VBox>
    </center>
    <top>
-      <Label text="Insert Details" BorderPane.alignment="CENTER">
+      <Label text="Change Details" BorderPane.alignment="CENTER">
          <font>
             <Font size="31.0" />
          </font>
       </Label>
    </top>
    <bottom>
-      <Button fx:id="create" mnemonicParsing="false" text="Create" BorderPane.alignment="CENTER" />
+      <Button fx:id="save" mnemonicParsing="false" text="Save" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>
