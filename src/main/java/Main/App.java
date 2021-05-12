@@ -1,6 +1,7 @@
 package Main;
 
 import Controllers.OrgNoWedController;
+import Controllers.OrgWedController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import jsonUtils.FileWriter;
@@ -29,9 +30,22 @@ public class App extends Application {
     public static void setUserLoggedIn(User userLoggedIn) {     //when the logout is clicked, this must be set to null or sth like that
 
         App.userLoggedIn = userLoggedIn;
-        OrgNoWedController noWedController = SceneManager.getInstance().getController(SceneManager.SceneType.ORG_NO_WED);
 
-        noWedController.setNameLabels(userLoggedIn);     //!!!!!!!!!!!!!!!!!!!
+        if(userLoggedIn.getRole().equals("Organizer"))
+        {
+            String username = userLoggedIn.getUsername();
+            if(FileWriter.wedMap.get(username)==null)
+            {
+                OrgNoWedController noWedController = SceneManager.getInstance().getController(SceneManager.SceneType.ORG_NO_WED);
+                noWedController.setNameLabels(userLoggedIn);     //!!!!!!!!!!!!!!!!!!!
+            }
+            else
+            {
+                OrgWedController wedController = SceneManager.getInstance().getController(SceneManager.SceneType.ORG_WED);
+                wedController.setNameLabels(userLoggedIn);     //!!!!!!!!!!!!!!!!!!!
+            }
+        }
+
     }
 
 
@@ -49,7 +63,8 @@ public class App extends Application {
         //from now use FileWriter.list instead
 
         //iterate over hash map
-//        Iterator it = FileWriter.userMap.entrySet().iterator();
+//        Iterator it = FileWriter.wedMap.entrySet().iterator();
+//        System.out.println("iteration");
 //        while (it.hasNext())
 //        {
 //            Map.Entry pair = (Map.Entry)it.next();

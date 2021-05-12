@@ -58,6 +58,11 @@ public class FileWriter
         {
             userMap.put(temp.getUsername(), temp);
         }
+        //populate wed map
+        for(var temp : weddings)
+        {
+            wedMap.put(temp.getUsername(), temp);
+        }
 
     }
 
@@ -100,9 +105,9 @@ public class FileWriter
     {
         weddings.add(wed);
         //populate the wedmap with <username, wedding>
-        for(var temp : weddings)
-        {
-            wedMap.put(temp.getUsername(), temp);
-        }
+//        for(var temp : weddings)
+//        {
+//            wedMap.put(temp.getUsername(), temp);
+//        }
     }
 }
