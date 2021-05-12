@@ -42,11 +42,16 @@ public class LoginController implements Initializable
 
     }
 
-    public void backButtonClicked()
+    public void reset()
     {
         username.clear();
         password.clear();
         message.setText("");
+    }
+
+    public void backButtonClicked()
+    {
+        reset();
         App.getI().changeSceneOnMainStage(SceneManager.SceneType.REGISTER);
     }
 

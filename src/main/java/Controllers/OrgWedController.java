@@ -32,6 +32,7 @@ public class OrgWedController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
             detailsButton.setOnAction(e -> detailsButtonClicked());
+            logoutButton.setOnAction(e->logoutButtonClicked());
     }
 
     public void setNameLabels(User u){
@@ -44,5 +45,14 @@ public class OrgWedController implements Initializable {
     private void detailsButtonClicked()
     {
         App.getI().changeSceneOnMainStage(SceneManager.SceneType.WED_DETAILS);
+    }
+
+    private void logoutButtonClicked()
+    {
+        App.getI().changeSceneOnMainStage(SceneManager.SceneType.LOGIN);
+        App.setUserLoggedIn(null);
+
+        LoginController log = SceneManager.getInstance().getController(SceneManager.SceneType.LOGIN);
+        log.reset();
     }
 }

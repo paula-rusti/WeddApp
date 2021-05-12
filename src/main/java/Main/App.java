@@ -32,6 +32,8 @@ public class App extends Application {
 
         App.userLoggedIn = userLoggedIn;
 
+        if(userLoggedIn==null)
+            return;
 
         if(userLoggedIn.getRole().equals("organizer"))
         {

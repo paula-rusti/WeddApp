@@ -10,7 +10,7 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.OrgNoWedController">
    <children>
       <Button fx:id="manageButton" layoutX="8.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" text="Manage Account" />
-      <Button fx:id="backButton" layoutX="534.0" layoutY="361.0" mnemonicParsing="false" text="Back" />
+      <Button fx:id="logout" layoutX="534.0" layoutY="361.0" mnemonicParsing="false" text="logout" />
       <HBox alignment="CENTER" layoutX="356.0" layoutY="7.0" prefHeight="52.0" prefWidth="201.0">
          <children>
             <Label fx:id="name" text="Label">

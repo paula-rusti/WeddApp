@@ -10,6 +10,7 @@ import jsonUtils.FileWriter;
 import model.Date;
 import model.User;
 import model.Wedding;
+import sceneUtils.SceneManager;
 
 import java.net.URL;
 import java.util.Iterator;
@@ -33,6 +34,8 @@ public class ChangeDetailsController implements Initializable {
 
     @FXML
     private Button save;
+    @FXML
+    private Button back;
 
 
     @Override
@@ -44,6 +47,7 @@ public class ChangeDetailsController implements Initializable {
         day.setTooltip(new Tooltip("select day"));
 
         save.setOnAction(e->saveButtonClicked());
+        back.setOnAction(e->backButtonClicked());
     }
 
     private void saveButtonClicked()  //when clicked the wedding must get written in the file
@@ -55,6 +59,11 @@ public class ChangeDetailsController implements Initializable {
             System.out.println(e.getMessage());
         }
 
+    }
+
+    private void backButtonClicked()
+    {
+        App.getI().changeSceneOnMainStage(SceneManager.SceneType.ORG_WED);
     }
 
     public void loadDetails(User u)

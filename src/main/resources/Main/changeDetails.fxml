@@ -71,6 +71,11 @@
       </Label>
    </top>
    <bottom>
-      <Button fx:id="save" mnemonicParsing="false" text="Save" BorderPane.alignment="CENTER" />
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="save" mnemonicParsing="false" text="Save" />
+            <Button fx:id="back" mnemonicParsing="false" text="Back" />
+         </children>
+      </HBox>
    </bottom>
 </BorderPane>
