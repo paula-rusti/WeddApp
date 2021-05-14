@@ -1,6 +1,7 @@
 package Controllers;
 
 import Main.App;
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -19,13 +20,13 @@ public class OrgWedController implements Initializable {
     @FXML
     private Button accButton;
     @FXML
-    private Button detailsButton;
+    private JFXButton detailsButton;
     @FXML
-    private Button wedListButton;
+    private JFXButton wedListButton;
     @FXML
-    private Button taskListButton;
+    private JFXButton taskListButton;
     @FXML
-    private Button invitesListButton;
+    private JFXButton invitesListButton;
     @FXML
     private Button logoutButton;
 
