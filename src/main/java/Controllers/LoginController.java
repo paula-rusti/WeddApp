@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Paint;
 import jsonUtils.FileWriter;
 import model.User;
 import sceneUtils.SceneManager;
@@ -21,8 +22,6 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable
 {
     @FXML
-    private JFXButton backButton;
-    @FXML
     private TextField username;
     @FXML
     private PasswordField password;
@@ -32,12 +31,15 @@ public class LoginController implements Initializable
     private Label message;
     @FXML
     private JFXButton loginButton;
+    @FXML
+    private JFXButton registerButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        backButton.setOnAction(e -> backButtonClicked());
+        registerButton.setOnAction(e -> registerButtonClicked());
         role.getItems().addAll("Guest", "Organizer");
+
         loginButton.setOnAction(e -> loginButtonClicked());
 
     }
@@ -49,7 +51,7 @@ public class LoginController implements Initializable
         message.setText("");
     }
 
-    public void backButtonClicked()
+    public void registerButtonClicked()
     {
         reset();
         App.getI().changeSceneOnMainStage(SceneManager.SceneType.REGISTER);
