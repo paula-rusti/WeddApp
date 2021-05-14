@@ -42,22 +42,27 @@ public class LoginController implements Initializable
 
     }
 
-    public void backButtonClicked()
+    public void reset()
     {
         username.clear();
         password.clear();
         message.setText("");
+    }
+
+    public void backButtonClicked()
+    {
+        reset();
         App.getI().changeSceneOnMainStage(SceneManager.SceneType.REGISTER);
     }
 
     public void loginButtonClicked()
     {
-        System.out.println("here!!!!!!!");
         try {
             handleLogin();
             message.setText("Login Successful!");
             User temp = FileWriter.userMap.get(username.getText());
-            App.setUserLoggedIn(temp);
+
+            App.setUserLoggedIn(temp);      //sets the user logged in to be the one that logged in now
 
             //redirect behavior
             String s = (String)role.getValue();
@@ -68,7 +73,7 @@ public class LoginController implements Initializable
                 //we need to see if the organizer has created a wedding or not
                 if(FileWriter.wedMap.get(username.getText())==null)
                 {
-                    System.out.println("no wed for username");
+                    System.out.println("no wed for username!!!!");
                     App.getI().changeSceneOnMainStage(SceneManager.SceneType.ORG_NO_WED);
                 }
                 else
@@ -100,7 +105,7 @@ public class LoginController implements Initializable
                     //System.out.println(guest.getUsername());
                     if(guest.getUsername().equals(username.getText())) //if a user with that username is present in the file
                     {
-                        System.out.println("guest username found");
+                        System.out.println("guest username found!!!!!!!!");
                         if(guest.getPassword().equals(RegisterValidation.encodePassword(guest.getUsername(), password.getText())))
                         {
                             //System.out.println("Login success");
@@ -125,7 +130,7 @@ public class LoginController implements Initializable
                     //System.out.println(org.getUsername());
                     if(org.getUsername().equals(username.getText())) //if a user with that username is present in the file
                     {
-                        System.out.println("guest username found");
+                        System.out.println("org username found");
                         if(org.getPassword().equals(RegisterValidation.encodePassword(org.getUsername(), password.getText())))
                         {
                             //System.out.println("Login success");

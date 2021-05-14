@@ -1,12 +1,15 @@
 package Main;
 
+import Controllers.ChangeDetailsController;
 import Controllers.OrgNoWedController;
+import Controllers.OrgWedController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import jsonUtils.FileWriter;
 import model.*;
 import sceneUtils.SceneManager;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -25,12 +28,32 @@ public class App extends Application {
         return userLoggedIn;
     }
 
-    public static void setUserLoggedIn(User userLoggedIn) {
+    public static void setUserLoggedIn(User userLoggedIn) {     //when the logout is clicked, this must be set to null or sth like that
 
         App.userLoggedIn = userLoggedIn;
-        OrgNoWedController noWedController = SceneManager.getInstance().getController(SceneManager.SceneType.ORG_NO_WED);
 
-        noWedController.setNameLabel(userLoggedIn);     //!!!!!!!!!!!!!!!!!!!
+        if(userLoggedIn==null)
+            return;
+
+        if(userLoggedIn.getRole().equals("organizer"))
+        {
+            String username = userLoggedIn.getUsername();
+            if(FileWriter.wedMap.get(username)==null)
+            {
+                OrgNoWedController noWedController = SceneManager.getInstance().getController(SceneManager.SceneType.ORG_NO_WED);
+                noWedController.setNameLabels(userLoggedIn);     //!!!!!!!!!!!!!!!!!!!
+            }
+            else
+            {
+                OrgWedController wedController = SceneManager.getInstance().getController(SceneManager.SceneType.ORG_WED);
+                wedController.setNameLabels(userLoggedIn);     //!!!!!!!!!!!!!!!!!!!
+
+                ChangeDetailsController detailsController = SceneManager.getInstance().getController(SceneManager.SceneType.WED_DETAILS);
+                detailsController.loadDetails(userLoggedIn);
+            }
+        }
+        else System.out.println("wtf");
+
     }
 
 
@@ -42,11 +65,14 @@ public class App extends Application {
         //load users from file in the arrays to have them globally available;
         FileWriter.loadDataFromFile();
 
+//        FileWriter.addWedd(new Wedding(new Date(1,1,2012), "here", 20000, 200, "RustiPaula"));
+//        FileWriter.persistWed();
 
         //from now use FileWriter.list instead
 
         //iterate over hash map
-//        Iterator it = FileWriter.userMap.entrySet().iterator();
+//        Iterator it = FileWriter.wedMap.entrySet().iterator();
+//        System.out.println("iteration");
 //        while (it.hasNext())
 //        {
 //            Map.Entry pair = (Map.Entry)it.next();

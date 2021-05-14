@@ -20,7 +20,7 @@ public class Wedding
         this.budget = budget;
         this.maxInvites = maxInvites;
         this.username = username;
-        taskList=new ArrayList<>();     //when a wedd in screated the tasklist is empty and has to be filled later
+        taskList=new ArrayList<>();     //when a wedd is created the tasklist is empty and has to be filled later
     }
 
     public void addTask(Task t)
