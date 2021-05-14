@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefWidth="502.0" stylesheets="@../Image/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.RegisterController">
+<VBox alignment="CENTER" prefWidth="502.0" stylesheets="@../Image/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.RegisterController">
    <children>
       <HBox alignment="CENTER">
          <VBox.margin>
@@ -37,7 +32,7 @@
                         <Font name="System Bold" size="31.0" />
                      </font>
                   </Label>
-                  <JFXButton fx:id="backButton" ripplerFill="#c0c4c3" text="⮜" textFill="WHITE">
+                  <JFXButton fx:id="backButton" ripplerFill="#c0c4c3" style="-fx-background-color: transparent;" text="⮜" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
