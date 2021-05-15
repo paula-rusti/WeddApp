@@ -13,5 +13,7 @@ public class Date
         year=y;
     }
 
-    //TODO add to string
+    public String toString(){
+        return day+"/"+month+"/"+year;
+    }
 }

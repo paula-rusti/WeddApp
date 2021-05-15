@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CreateTaskController">
+   <children>
+      <Button fx:id="backButton" layoutX="48.0" layoutY="26.0" mnemonicParsing="false" text="Back" />
+      <Button fx:id="saveButton" layoutX="274.0" layoutY="315.0" mnemonicParsing="false" text="Save" />
+      <TextField fx:id="taskname" layoutX="220.0" layoutY="26.0" promptText="Task Name" />
+      <TextArea fx:id="description" layoutX="194.0" layoutY="83.0" prefHeight="127.0" prefWidth="200.0" promptText="Description.." />
+      <DatePicker fx:id="date" layoutX="213.0" layoutY="255.0" promptText="Date" />
+   </children>
+</AnchorPane>

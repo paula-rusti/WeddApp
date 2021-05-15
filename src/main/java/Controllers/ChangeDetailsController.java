@@ -24,7 +24,6 @@ public class ChangeDetailsController implements Initializable {
     private TextField location;
     @FXML
     private TextField maxInvites;
-
     @FXML
     private ChoiceBox<Integer> day;
     @FXML

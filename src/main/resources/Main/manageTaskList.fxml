@@ -11,18 +11,15 @@
                <children>
                   <Button fx:id="back" layoutX="30.0" layoutY="14.0" mnemonicParsing="false" text="Back" />
                   <Button fx:id="addButton" layoutX="171.0" layoutY="14.0" mnemonicParsing="false" text="Add Task" />
-                  <Button fx:id="deleteButton" layoutX="315.0" layoutY="14.0" mnemonicParsing="false" text="Delete Task" />
+                  <Button fx:id="deleteButton" layoutX="291.0" layoutY="14.0" mnemonicParsing="false" text="Delete Task" />
                   <TableView fx:id="table" layoutX="68.0" layoutY="91.0" prefHeight="259.0" prefWidth="497.0">
                     <columns>
                       <TableColumn fx:id="task" prefWidth="129.5999984741211" text="Task" />
                       <TableColumn fx:id="deadline" prefWidth="118.5999755859375" text="Deadline" />
                         <TableColumn fx:id="description" prefWidth="127.4000244140625" text="Description" />
-                        <TableColumn fx:id="status" prefWidth="121.39996337890625" text="Status" />
+                        <TableColumn fx:id="progress" prefWidth="121.39996337890625" text="Status" />
                     </columns>
                   </TableView>
-                  <TextField fx:id="taskname" layoutX="15.0" layoutY="53.0" promptText="taskName" />
-                  <TextField fx:id="descriptionFiled" layoutX="171.0" layoutY="53.0" prefHeight="26.0" prefWidth="164.0" promptText="Description" />
-                  <DatePicker fx:id="date" layoutX="359.0" layoutY="53.0" promptText="Deadline" />
                </children>
             </AnchorPane>
          </children>
