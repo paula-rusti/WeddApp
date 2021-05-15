@@ -38,7 +38,17 @@ public class OrgWedController implements Initializable {
                 App.getI().changeSceneOnMainStage(SceneManager.SceneType.WED_LIST);
             });
             invitesListButton.setOnAction(e->{
+
                 App.getI().changeSceneOnMainStage(SceneManager.SceneType.INVITES);
+                InvitesListController invitesListController = SceneManager.getInstance().getController(SceneManager.SceneType.INVITES);
+                if ( App.getUserLoggedIn().getRole().equals("organizer") )
+                {
+                    invitesListController.initOrgList();
+                }
+                else
+                {
+                    invitesListController.initGuestList();
+                }
             });
     }
 

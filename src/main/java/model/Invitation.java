@@ -26,7 +26,7 @@ public class Invitation
         this.status = status;
     }
 
-    private enum STATUS
+    public enum STATUS
     {
         PENDING,
         ACCEPTED,

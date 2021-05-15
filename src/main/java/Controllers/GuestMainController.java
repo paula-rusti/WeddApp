@@ -1,8 +1,10 @@
 package Controllers;
 
+import Main.App;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import sceneUtils.SceneManager;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,7 +31,19 @@ public class GuestMainController implements Initializable
 
     private void invitationsButtonClicked()
     {
-        
+        invitationsButton.setOnAction(e->{
+
+            App.getI().changeSceneOnMainStage(SceneManager.SceneType.INVITES);
+            InvitesListController invitesListController = SceneManager.getInstance().getController(SceneManager.SceneType.INVITES);
+            if ( App.getUserLoggedIn().getRole().equals("organizer") )
+            {
+                invitesListController.initOrgList();
+            }
+            else
+            {
+                invitesListController.initGuestList();
+            }
+        });
     }
 
     private void eventsButtonClicked()

@@ -1,7 +1,6 @@
 package jsonUtils;
 import Validation.RegisterValidation;
 import exceptions.*;
-import listUtils.InvitesList;
 import model.*;
 
 import com.fasterxml.jackson.core.type.TypeReference;

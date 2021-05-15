@@ -9,13 +9,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import jsonUtils.FileWriter;
-import listUtils.InvitesList;
-import listUtils.WedList;
+import listUtils.GuestInvitesList;
+import listUtils.OrgInvitesList;
 import model.Invitation;
-import model.WedListElem;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class InvitesListController implements Initializable {
@@ -28,21 +26,36 @@ public class InvitesListController implements Initializable {
     @FXML
     private TextField userField;
 
-    private InvitesList list;
+    private OrgInvitesList listOrg;
+    private GuestInvitesList listGuest;
 
-    public ObservableList<Invitation> getList()
+    public ObservableList<Invitation> getListOrg()
     {
-        return list.getList();
+        return listOrg.getList();
     }
 
-    public void reloadList(){
-        list = new InvitesList(FileWriter.invites, vbox);
+    public ObservableList<Invitation> getListGuest(){ return listGuest.getList();}
+
+    public void reloadListOrg(){
+        listOrg = new OrgInvitesList(FileWriter.invites, vbox);
+    }
+    public void reloadListGuest(){
+        listGuest = new GuestInvitesList(FileWriter.invites, vbox);
     }
 
+    public void initOrgList()
+    {
+        listOrg = new OrgInvitesList(FileWriter.invites, vbox);
+    }
+
+    public void initGuestList()
+    {
+        listGuest = new GuestInvitesList(FileWriter.invites, vbox);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        list = new InvitesList(FileWriter.invites, vbox);
+        //list = new OrgInvitesList(FileWriter.invites, vbox);
         inviteButton.setOnAction(e->inviteButtonClicked());
     }
 
@@ -74,7 +87,7 @@ public class InvitesListController implements Initializable {
                 FileWriter.persistInvites(); //write the invites in file
             }
         }
-        reloadList();
+        reloadListOrg();
 
     }
 }
