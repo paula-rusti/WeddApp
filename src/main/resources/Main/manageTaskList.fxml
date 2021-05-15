@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ManageTaskListController">
+   <children>
+      <HBox>
+         <children>
+            <AnchorPane prefHeight="400.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="back" layoutX="30.0" layoutY="14.0" mnemonicParsing="false" text="Back" />
+                  <Button fx:id="addButton" layoutX="171.0" layoutY="14.0" mnemonicParsing="false" text="Add Task" />
+                  <Button fx:id="deleteButton" layoutX="275.0" layoutY="14.0" mnemonicParsing="false" text="Delete Task" />
+                  <TableView fx:id="table" layoutX="89.0" layoutY="92.0" prefHeight="249.0" prefWidth="451.0">
+                    <columns>
+                      <TableColumn fx:id="task" prefWidth="160.80001068115234" text="Task" />
+                      <TableColumn fx:id="deadline" prefWidth="117.5999755859375" text="Deadline" />
+                        <TableColumn fx:id="description" prefWidth="70.79998779296875" text="Description" />
+                        <TableColumn fx:id="status" prefWidth="99.99998779296874" text="Status" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</VBox>

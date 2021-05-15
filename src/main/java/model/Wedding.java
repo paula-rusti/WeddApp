@@ -1,6 +1,8 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Wedding
 {
@@ -29,14 +31,19 @@ public class Wedding
         this.budget = budget;
         this.maxInvites = maxInvites;
         this.username = username;
-        taskList=new ArrayList<>();     //when a wedd is created the tasklist is empty and has to be filled later
+        taskList=new ArrayList<>();
+        //when a wedd is created the tasklist is empty and has to be filled later
     }
 
-    public void addTask(Task t)
-    {
-        taskList.add(t);
+    public List<Task> getTaskList() {
+        return taskList;
     }
 
+
+
+    public void addTask(Task t){
+        System.out.println("adding to list");
+        taskList.add(t);}
     public int getMaxInvites() {
         return maxInvites;
     }
@@ -76,4 +83,9 @@ public class Wedding
     public void setUsername(String username) {
         this.username = username;
     }
+    public String toString(){
+        return location+" "+taskList.toString();
+
+    }
+
 }

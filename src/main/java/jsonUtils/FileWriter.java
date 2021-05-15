@@ -1,5 +1,6 @@
 package jsonUtils;
 import Validation.RegisterValidation;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import exceptions.*;
 import model.*;
 
@@ -92,15 +93,7 @@ public class FileWriter
         }
     }
 
-    public static void persistWed() {    //writes weddings list to file
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
 
-            objectMapper.writerWithDefaultPrettyPrinter().writeValue(WeddingPATH.toFile(), weddings);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public static void persistWedList() {    //writes wedLIst to file
         try {
@@ -137,7 +130,15 @@ public class FileWriter
 
         userMap.put(u.getUsername(), u);
     }
+    public static void addTask(String username, Task t){
+        for(Wedding w : weddings)
+            if(w.getUsername().equals(username)) {
+                System.out.print("File found user");
+                w.addTask(t);
+                System.out.println(w.getTaskList());
+            }
 
+    }
     public static void addWedd(Wedding wed)
     {
         weddings.add(wed);
@@ -156,5 +157,14 @@ public class FileWriter
     public static void addInvite(Invitation x)
     {
         invites.add(x);
+    }
+    public static void persistWed() {    //writes weddings list to file
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            //objectMapper.enableDefaultTyping();
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(WeddingPATH.toFile(), weddings);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

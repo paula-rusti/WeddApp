@@ -10,7 +10,7 @@ module org.example {
     opens Controllers to javafx.fxml;
     opens sceneUtils to javafx.fxml;
     opens jsonUtils to com.fasterxml.jackson.databind;
-    opens model to com.fasterxml.jackson.databind;
+    opens model to com.fasterxml.jackson.databind,javafx.base;
 
     exports Main;
     exports Controllers;

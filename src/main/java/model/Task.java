@@ -1,15 +1,22 @@
 package model;
 
+
+
 public class Task
 {
-    private Date deadline;
+    private String name;
+    private String deadline;
     private String description;
+    private String status="To Do";
 
     Task(){}
 
-    public Task(Date deadline, String description) {
+    public Task(String name, String deadline, String description) {
+        this.name = name;
         this.deadline = deadline;
         this.description = description;
+      //  this.stage="To Do";
+
     }
 
     public String getDescription() {
@@ -20,11 +27,31 @@ public class Task
         this.description = description;
     }
 
-    public Date getDeadline() {
+    public String getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(Date deadline) {
+    public void setDeadline(String deadline) {
         this.deadline = deadline;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String toString() {
+
+        return name+" "+description+" "+deadline;
     }
 }

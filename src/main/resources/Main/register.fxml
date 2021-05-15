@@ -18,7 +18,7 @@
             <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
          </VBox.margin>
          <children>
-            <Pane minWidth="-Infinity" prefHeight="386.0" style="-fx-background-radius: 20px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
+            <Pane minWidth="-Infinity" prefHeight="386.0" style="-fx-background-color: white; -fx-background-radius: 20px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
                <children>
                   <TextField fx:id="username" layoutX="136.0" layoutY="79.0" promptText="Username" />
                   <TextField fx:id="surname" layoutX="136.0" layoutY="147.0" promptText="Surname" />
@@ -26,21 +26,38 @@
                   <TextField fx:id="tel" layoutX="136.0" layoutY="177.0" promptText="Tel" />
                   <TextField fx:id="email" layoutX="136.0" layoutY="208.0" promptText="Email" />
                   <PasswordField fx:id="password" layoutX="135.0" layoutY="239.0" promptText="Password" />
-                  <JFXComboBox fx:id="role" focusColor="WHITE" layoutX="248.0" layoutY="276.0" prefHeight="26.0" prefWidth="125.0" promptText="Role" unFocusColor="WHITE" />
-                  <JFXButton fx:id="regButton" buttonType="RAISED" layoutX="112.0" layoutY="309.0" prefHeight="26.0" prefWidth="221.0" ripplerFill="WHITE" style="-fx-background-color: transparent;" text="Register" textFill="WHITE">
+                  <JFXComboBox fx:id="role" focusColor="#82e8df" layoutX="248.0" layoutY="276.0" prefHeight="26.0" prefWidth="125.0" promptText="Role" unFocusColor="WHITE" />
+                  <JFXButton fx:id="regButton" buttonType="RAISED" layoutX="112.0" layoutY="309.0" prefHeight="26.0" prefWidth="221.0" ripplerFill="WHITE" style="-fx-background-color: linear-gradient(to left,#6DFFE2,#9BE8FF);" text="Register" textFill="WHITE">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </JFXButton>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="88.0" layoutY="3.0" prefHeight="67.0" prefWidth="244.0" style="-fx-background-color: transparent;" text="Register" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="88.0" layoutY="3.0" prefHeight="67.0" prefWidth="244.0" text="Register" textAlignment="CENTER" textFill="#180c0c" wrapText="true">
                      <font>
                         <Font name="System Bold" size="31.0" />
                      </font>
                   </Label>
-                  <JFXButton fx:id="backButton" ripplerFill="#c0c4c3" style="-fx-background-color: transparent;" text="⮜" textFill="WHITE">
+                  <Label fx:id="message" alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="359.0" prefHeight="26.0" prefWidth="419.0" textAlignment="CENTER" wrapText="true" />
+                  <JFXButton fx:id="backButton" text="⮜">
                      <font>
                         <Font size="16.0" />
                      </font>
+                     <ripplerFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.255165696144104" green="0.8307797312736511" blue="0.8947368264198303" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.5592592358589172" green="1.0" blue="0.9191975593566895" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </ripplerFill>
                   </JFXButton>
                   <Label fx:id="message" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="359.0" prefHeight="26.0" prefWidth="419.0" style="-fx-background-color: transparent;" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
                </children>

@@ -52,6 +52,8 @@ public class OrgWedController implements Initializable {
             });
     }
 
+    private void taskListButtonClicked() { App.getI().changeSceneOnMainStage(SceneManager.SceneType.TASK_LIST); }
+
     public void setNameLabels(User u){
         if(u==null)
             return;
