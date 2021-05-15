@@ -2,11 +2,13 @@ package listUtils;
 
 import Controllers.WedListController;
 import Main.App;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.util.Pair;
 import jsonUtils.FileWriter;
 import model.WedListElem;
@@ -26,10 +28,16 @@ public class WedList extends ListBaseClass<WedListElem> {
     protected Pair<Parent, WedListElem> createElement(WedListElem x) {
         HBox hBox = new HBox();
         hBox.setPrefHeight(400);
-        Label label = new Label(x.getName());
+
+        hBox.setAlignment(Pos.CENTER);
+        hBox.setSpacing(30);
+
+        Label label = new Label("Name: "+ x.getName());
+        Label price = new Label("Price: "+x.getPrice()+"");
         Button delete = new Button("delete");
 
         hBox.getChildren().add(label);
+        hBox.getChildren().addAll(price);
         hBox.getChildren().add(delete);
 
         delete.setOnAction(e -> {
