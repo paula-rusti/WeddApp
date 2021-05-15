@@ -35,6 +35,7 @@ public class WedList extends ListBaseClass<WedListElem> {
         delete.setOnAction(e -> {
             System.out.println("del pressed");
             WedListController cont = SceneManager.getInstance().getController(SceneManager.SceneType.WED_LIST);
+
             System.out.println(cont.getList());
             cont.getList().remove(x);
             System.out.println(cont.getList());

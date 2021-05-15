@@ -4,6 +4,17 @@ public class WedListElem {
     private String name;
     private String owner;
     private int price;
+    private String username; //the username to which the user belongs to
+
+
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getName() {
         return name;
@@ -31,10 +42,11 @@ public class WedListElem {
 
     public WedListElem(){}
 
-    public WedListElem(String name, String owner, int price)
+    public WedListElem(String username, String name, int price)
     {
+        this.username=username;
         this.name=name;
-        this.owner=owner;
+        this.owner=null;
         this.price=price;
     }
 }
