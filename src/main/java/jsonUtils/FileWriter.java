@@ -1,5 +1,6 @@
 package jsonUtils;
 import Validation.RegisterValidation;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import exceptions.*;
 import model.*;
 
@@ -77,15 +78,7 @@ public class FileWriter
         }
     }
 
-    public static void persistWed() {    //writes weddings list to file
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
 
-            objectMapper.writerWithDefaultPrettyPrinter().writeValue(WeddingPATH.toFile(), weddings);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public static void addUser(User u) throws UsernameAlreadyExistsException,CredentialsAreNullException , InvalidPhoneNumberException {
         RegisterValidation.checkCredentialsAreNotNull(u);
@@ -100,7 +93,15 @@ public class FileWriter
             organizers.add((Organizer) u);
         persistUsers();
     }
+    public static void addTask(String username, Task t){
+        for(Wedding w : weddings)
+            if(w.getUsername().equals(username)) {
+                System.out.print("File found user");
+                w.addTask(t);
+                System.out.println(w.getTaskList());
+            }
 
+    }
     public static void addWedd(Wedding wed)
     {
         weddings.add(wed);
@@ -109,5 +110,14 @@ public class FileWriter
 //        {
 //            wedMap.put(temp.getUsername(), temp);
 //        }
+    }
+    public static void persistWed() {    //writes weddings list to file
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            //objectMapper.enableDefaultTyping();
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(WeddingPATH.toFile(), weddings);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

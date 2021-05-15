@@ -3,16 +3,20 @@ package Controllers;
 import Main.App;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import jsonUtils.FileWriter;
 import model.Date;
 import model.Task;
+import model.Wedding;
 import sceneUtils.SceneManager;
-
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -52,13 +56,18 @@ public class CreateTaskController implements Initializable {
 
     private void handleSaveTask() {
         String username= App.getUserLoggedIn().getUsername();
+        System.out.println("add user"+username);
         Date temp = new Date(day.getValue(), month.getValue(), year.getValue());
-       // FileWriter.wedMap.get(username).addTask(new Task(name.getText(),temp,description.getText()));
-        //FileWriter.persistWed();
+        String date=""+day.getValue()+"."+month.getValue()+"."+year.getValue();
+        FileWriter.wedMap.get(username).addTask(new Task(name.getText(),date,description.getText()));
+        FileWriter.addTask(username,new Task(name.getText(),date,description.getText()));
+        System.out.println(FileWriter.weddings);
+        FileWriter.persistWed();
 
     }
 
     private void backButtonClicked() {
+
         App.getI().changeSceneOnMainStage(SceneManager.SceneType.TASK_LIST);
     }
 }

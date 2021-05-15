@@ -1,21 +1,22 @@
 package model;
 
-import javafx.scene.control.ChoiceBox;
+
 
 public class Task
 {
     private String name;
-    private Date deadline;
+    private String deadline;
     private String description;
-    private ChoiceBox<String> stage;
+    private String status="To Do";
 
     Task(){}
 
-    public Task(String name, Date deadline, String description) {
+    public Task(String name, String deadline, String description) {
         this.name = name;
         this.deadline = deadline;
         this.description = description;
-        this.stage.setValue("To Do");
+      //  this.stage="To Do";
+
     }
 
     public String getDescription() {
@@ -26,20 +27,20 @@ public class Task
         this.description = description;
     }
 
-    public Date getDeadline() {
+    public String getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(Date deadline) {
+    public void setDeadline(String deadline) {
         this.deadline = deadline;
     }
 
-    public ChoiceBox getStage() {
-        return stage;
+    public String getStatus() {
+        return status;
     }
 
-    public void setStage(ChoiceBox stage) {
-        this.stage = stage;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getName() {
@@ -48,5 +49,9 @@ public class Task
 
     public void setName(String name) {
         this.name = name;
+    }
+    public String toString() {
+
+        return name+" "+description+" "+deadline;
     }
 }

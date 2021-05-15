@@ -3,6 +3,7 @@ package Main;
 import Controllers.ChangeDetailsController;
 import Controllers.OrgNoWedController;
 import Controllers.OrgWedController;
+import Controllers.ManageTaskListController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import jsonUtils.FileWriter;
@@ -47,7 +48,8 @@ public class App extends Application {
             {
                 OrgWedController wedController = SceneManager.getInstance().getController(SceneManager.SceneType.ORG_WED);
                 wedController.setNameLabels(userLoggedIn);     //!!!!!!!!!!!!!!!!!!!
-
+                ManageTaskListController task = SceneManager.getInstance().getController(SceneManager.SceneType.TASK_LIST);
+                task.setUser(userLoggedIn);
                 ChangeDetailsController detailsController = SceneManager.getInstance().getController(SceneManager.SceneType.WED_DETAILS);
                 detailsController.loadDetails(userLoggedIn);
             }
