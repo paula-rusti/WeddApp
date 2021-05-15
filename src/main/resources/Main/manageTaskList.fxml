@@ -11,15 +11,18 @@
                <children>
                   <Button fx:id="back" layoutX="30.0" layoutY="14.0" mnemonicParsing="false" text="Back" />
                   <Button fx:id="addButton" layoutX="171.0" layoutY="14.0" mnemonicParsing="false" text="Add Task" />
-                  <Button fx:id="deleteButton" layoutX="275.0" layoutY="14.0" mnemonicParsing="false" text="Delete Task" />
+                  <Button fx:id="deleteButton" layoutX="315.0" layoutY="14.0" mnemonicParsing="false" text="Delete Task" />
                   <TableView fx:id="table" layoutX="89.0" layoutY="92.0" prefHeight="249.0" prefWidth="451.0">
                     <columns>
-                      <TableColumn fx:id="task" prefWidth="160.80001068115234" text="Task" />
-                      <TableColumn fx:id="deadline" prefWidth="117.5999755859375" text="Deadline" />
-                        <TableColumn fx:id="description" prefWidth="70.79998779296875" text="Description" />
+                      <TableColumn fx:id="task" prefWidth="129.5999984741211" text="Task" />
+                      <TableColumn fx:id="deadline" prefWidth="118.5999755859375" text="Deadline" />
+                        <TableColumn fx:id="description" prefWidth="102.20001220703125" text="Description" />
                         <TableColumn fx:id="status" prefWidth="99.99998779296874" text="Status" />
                     </columns>
                   </TableView>
+                  <TextField fx:id="taskname" layoutX="50.0" layoutY="53.0" promptText="taskName" />
+                  <TextField fx:id="descriptionFiled" layoutX="204.0" layoutY="53.0" promptText="Description" />
+                  <DatePicker fx:id="date" layoutX="359.0" layoutY="53.0" promptText="Deadline" />
                </children>
             </AnchorPane>
          </children>

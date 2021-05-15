@@ -5,6 +5,7 @@ import Controllers.OrgNoWedController;
 import Controllers.OrgWedController;
 import Controllers.ManageTaskListController;
 import javafx.application.Application;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import jsonUtils.FileWriter;
 import model.*;
@@ -24,6 +25,7 @@ public class App extends Application {
     public static void main(String[] args) { launch(args); }
 
     private static User userLoggedIn=null;
+    private static TableView<Task> table= new TableView<>();
 
     public static User getUserLoggedIn() {
         return userLoggedIn;
@@ -57,6 +59,8 @@ public class App extends Application {
         else System.out.println("wtf");
 
     }
+
+
 
 
     @Override
@@ -103,4 +107,11 @@ public class App extends Application {
         stage.setScene(SceneManager.getInstance().getScene(sceneType));
     }
 
+    public static TableView<Task> getTable() {
+        return table;
+    }
+
+    public static void setTable(TableView<Task> table1) {
+        table = table1;
+    }
 }

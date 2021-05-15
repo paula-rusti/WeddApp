@@ -19,8 +19,7 @@ public class SceneManager
         ORG_WED,
         GUEST_MAIN,
         WED_DETAILS,
-        TASK_LIST,
-        ADD_TASK
+        TASK_LIST
     }
 
     private static SceneManager instance = null;
@@ -39,7 +38,6 @@ public class SceneManager
         sceneMap.put(SceneType.GUEST_MAIN, loadScene("/Main/guestMain.fxml"));
         sceneMap.put(SceneType.WED_DETAILS, loadScene("/Main/changeDetails.fxml"));
         sceneMap.put(SceneType.TASK_LIST, loadScene("/Main/manageTaskList.fxml"));
-        sceneMap.put(SceneType.ADD_TASK, loadScene("/Main/createTask.fxml"));
 
         // Check that all enums have a loaded scene
         for(SceneType s : SceneType.values())
