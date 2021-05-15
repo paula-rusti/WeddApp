@@ -28,8 +28,12 @@ import java.util.ResourceBundle;
         public void initialize(URL url, ResourceBundle resourceBundle)
         {
             back.setOnAction(e -> backButtonClicked());
+            addButton.setOnAction(e->addButtonClicked());
 
+        }
 
+        private void addButtonClicked() {
+            App.getI().changeSceneOnMainStage(SceneManager.SceneType.ADD_TASK);
         }
 
         private void backButtonClicked() {App.getI().changeSceneOnMainStage(SceneManager.SceneType.ORG_WED); }

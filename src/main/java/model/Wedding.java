@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Wedding
 {
@@ -23,11 +24,9 @@ public class Wedding
         taskList=new ArrayList<>();     //when a wedd is created the tasklist is empty and has to be filled later
     }
 
-    public void addTask(Task t)
-    {
-        taskList.add(t);
-    }
 
+    public ArrayList<Task> taskList(){ return taskList;}
+    public void addTask(Task t){ taskList.add(t);}
     public int getMaxInvites() {
         return maxInvites;
     }
@@ -67,4 +66,5 @@ public class Wedding
     public void setUsername(String username) {
         this.username = username;
     }
+
 }
