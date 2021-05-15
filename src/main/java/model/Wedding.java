@@ -11,7 +11,15 @@ public class Wedding
     private int budget;
     private int maxInvites;
 
-    private List<Task> taskList=new ArrayList<Task>();
+    public ArrayList<Task> getTaskList() {
+        return taskList;
+    }
+
+    public void setTaskList(ArrayList<Task> taskList) {
+        this.taskList = taskList;
+    }
+
+    private ArrayList<Task> taskList;
     private String username; //used to associate a wedding to a user
 
     Wedding(){}
@@ -26,11 +34,6 @@ public class Wedding
         taskList=new ArrayList<>();
         //when a wedd is created the tasklist is empty and has to be filled later
     }
-
-    public List<Task> getTaskList() {
-        return taskList;
-    }
-
 
 
     public void addTask(Task t){

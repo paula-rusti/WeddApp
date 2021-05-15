@@ -56,6 +56,8 @@ public class CreateWedController implements Initializable {
             System.out.println(e.getMessage());
         }
 
+
+
     }
 
     private void handleCreateWedd() throws WeddingAlreadyExist
