@@ -12,6 +12,7 @@ import jsonUtils.FileWriter;
 import listUtils.GuestInvitesList;
 import listUtils.OrgInvitesList;
 import model.Invitation;
+import sceneUtils.SceneManager;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,6 +26,8 @@ public class InvitesListController implements Initializable {
     private Label message;
     @FXML
     private TextField userField;
+    @FXML
+    private Button backButton;
 
     private OrgInvitesList listOrg;
     private GuestInvitesList listGuest;
@@ -57,6 +60,12 @@ public class InvitesListController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //list = new OrgInvitesList(FileWriter.invites, vbox);
         inviteButton.setOnAction(e->inviteButtonClicked());
+        backButton.setOnAction(e->{
+            if(App.getUserLoggedIn().getRole().equals("organizer"))
+                App.getI().changeSceneOnMainStage(SceneManager.SceneType.ORG_WED);
+            else
+                App.getI().changeSceneOnMainStage(SceneManager.SceneType.GUEST_MAIN);
+        });
     }
 
     private void inviteButtonClicked()
@@ -88,6 +97,12 @@ public class InvitesListController implements Initializable {
             }
         }
         reloadListOrg();
+    }
 
+    public void makeInvisible() //reuse this scene for the guest invites
+    {
+        inviteButton.setVisible(false);
+        message.setVisible(false);
+        userField.setVisible(false);
     }
 }

@@ -42,6 +42,7 @@ public class GuestMainController implements Initializable
             else
             {
                 invitesListController.initGuestList();
+                invitesListController.makeInvisible();
             }
         });
     }
@@ -53,7 +54,11 @@ public class GuestMainController implements Initializable
 
     private void logoutButtonClicked()
     {
+        App.getI().changeSceneOnMainStage(SceneManager.SceneType.LOGIN);
+        App.setUserLoggedIn(null);
 
+        LoginController log = SceneManager.getInstance().getController(SceneManager.SceneType.LOGIN);
+        log.reset();
     }
 
     private void accButtonClicked()
