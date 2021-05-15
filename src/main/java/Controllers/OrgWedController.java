@@ -34,7 +34,10 @@ public class OrgWedController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
             detailsButton.setOnAction(e -> detailsButtonClicked());
             logoutButton.setOnAction(e->logoutButtonClicked());
+            taskListButton.setOnAction(e->taskListButtonClicked());
     }
+
+    private void taskListButtonClicked() { App.getI().changeSceneOnMainStage(SceneManager.SceneType.TASK_LIST); }
 
     public void setNameLabels(User u){
         if(u==null)
