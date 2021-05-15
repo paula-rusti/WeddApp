@@ -20,7 +20,7 @@ public class SceneManager
         GUEST_MAIN,
         WED_DETAILS,
         WED_LIST,
-        INVITES
+        INVITES,
         TASK_LIST,
         ADD_TASK
     }

@@ -60,10 +60,10 @@ import java.util.ResourceBundle;
             String username=u.getUsername();
             ObservableList<Task> it = FXCollections.observableArrayList();
             List<Task> l= FileWriter.wedMap.get(username).getTaskList();
-            //if(l!=null) {
+            if(l!=null) {
                 for (Task t : l)
                     it.add(t);
-            //}
+            }
             System.out.println("username"+username);
             table.setItems(it);
         }

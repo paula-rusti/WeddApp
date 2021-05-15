@@ -50,6 +50,7 @@ public class OrgWedController implements Initializable {
                     invitesListController.initGuestList();
                 }
             });
+            taskListButton.setOnAction(e->taskListButtonClicked());
     }
 
     private void taskListButtonClicked() { App.getI().changeSceneOnMainStage(SceneManager.SceneType.TASK_LIST); }

@@ -10,7 +10,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.paint.Color?>
 <VBox alignment="CENTER" prefWidth="502.0" stylesheets="@../Image/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.RegisterController">
    <children>
       <HBox alignment="CENTER">
@@ -37,7 +39,7 @@
                         <Font name="System Bold" size="31.0" />
                      </font>
                   </Label>
-                  <Label fx:id="message" alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="359.0" prefHeight="26.0" prefWidth="419.0" textAlignment="CENTER" wrapText="true" />
+                  <Label  alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="359.0" prefHeight="26.0" prefWidth="419.0" textAlignment="CENTER" wrapText="true" />
                   <JFXButton fx:id="backButton" text="⮜">
                      <font>
                         <Font size="16.0" />

@@ -35,11 +35,6 @@ public class Wedding
         //when a wedd is created the tasklist is empty and has to be filled later
     }
 
-    public List<Task> getTaskList() {
-        return taskList;
-    }
-
-
 
     public void addTask(Task t){
         System.out.println("adding to list");
