@@ -34,10 +34,12 @@ public class OrgInvitesList extends ListBaseClass<Invitation>
 
         Label source = new Label("source: "+ x.getSource());
         Label dest = new Label("dest: "+ x.getDest());
+        Label status = new Label("status: "+ x.getStatus());
         Button delete = new Button("delete");
 
         hBox.getChildren().add(source);
         hBox.getChildren().addAll(dest);
+        hBox.getChildren().addAll(status);
         hBox.getChildren().add(delete);
 
 
