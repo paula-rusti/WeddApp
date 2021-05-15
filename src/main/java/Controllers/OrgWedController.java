@@ -37,6 +37,9 @@ public class OrgWedController implements Initializable {
             weddListButton.setOnAction(e -> {
                 App.getI().changeSceneOnMainStage(SceneManager.SceneType.WED_LIST);
             });
+            invitesListButton.setOnAction(e->{
+                App.getI().changeSceneOnMainStage(SceneManager.SceneType.INVITES);
+            });
     }
 
     public void setNameLabels(User u){

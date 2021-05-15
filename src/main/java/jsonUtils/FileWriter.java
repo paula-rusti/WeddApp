@@ -1,6 +1,7 @@
 package jsonUtils;
 import Validation.RegisterValidation;
 import exceptions.*;
+import listUtils.InvitesList;
 import model.*;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -21,11 +22,13 @@ public class FileWriter
     private static final Path OrganizerPATH = FilePath.getPathToFile("config", "organizers.json");
     private static final Path WeddingPATH = FilePath.getPathToFile("config", "weddings.json");
     private static final Path WedListPATH = FilePath.getPathToFile("config", "wedList.json");
+    private static final Path InvitesPATH = FilePath.getPathToFile("config", "invites.json");
 
     public static List<Organizer> organizers;      //the lists are edited in memory and then are written to file
     public static List<Guest> guests;
     public static List<Wedding> weddings;
     public static List<WedListElem> wedList;
+    public static List<Invitation> invites;
 
     public  static Map<String, User> userMap=new HashMap<>();   //username -> user
     public static Map<String, Wedding> wedMap=new HashMap<>(); //username -> wedding
@@ -43,7 +46,10 @@ public class FileWriter
             FileUtils.copyURLToFile(FileWriter.class.getClassLoader().getResource("weddings.json"), WeddingPATH.toFile());
         }
         if (!Files.exists(WedListPATH)) {
-            FileUtils.copyURLToFile(FileWriter.class.getClassLoader().getResource("wedList.json"), WeddingPATH.toFile());
+            FileUtils.copyURLToFile(FileWriter.class.getClassLoader().getResource("wedList.json"), WedListPATH.toFile());
+        }
+        if (!Files.exists(InvitesPATH)) {
+            FileUtils.copyURLToFile(FileWriter.class.getClassLoader().getResource("invites.json"), InvitesPATH.toFile());
         }
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -55,6 +61,8 @@ public class FileWriter
         weddings = objectMapper.readValue(WeddingPATH.toFile(), new TypeReference<List<Wedding>>() {
         });
         wedList = objectMapper.readValue(WedListPATH.toFile(), new TypeReference<List<WedListElem>>() {
+        });
+        invites = objectMapper.readValue(InvitesPATH.toFile(), new TypeReference<List<Invitation>>() {
         });
 
         //populate the hash map with users
@@ -105,6 +113,16 @@ public class FileWriter
         }
     }
 
+    public static void persistInvites() {    //writes wedLIst to file
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(InvitesPATH.toFile(), invites);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void addUser(User u) throws UsernameAlreadyExistsException,CredentialsAreNullException , InvalidPhoneNumberException {
         RegisterValidation.checkCredentialsAreNotNull(u);
         RegisterValidation.checkUserDoesNotAlreadyExist(u.getUsername());
@@ -134,5 +152,10 @@ public class FileWriter
     public static void addWedList(WedListElem x)
     {
         wedList.add(x);
+    }
+
+    public static void addInvite(Invitation x)
+    {
+        invites.add(x);
     }
 }
