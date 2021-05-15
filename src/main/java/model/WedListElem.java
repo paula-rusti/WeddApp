@@ -2,7 +2,7 @@ package model;
 
 public class WedListElem {
     private String name;
-    private String owner;
+    private String owner;       //this will be modified externally
     private int price;
     private String username; //the username to which the user belongs to
 

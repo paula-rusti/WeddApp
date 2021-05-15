@@ -8,6 +8,15 @@ public class Wedding
     private String location;
     private int budget;
     private int maxInvites;
+
+    public ArrayList<Task> getTaskList() {
+        return taskList;
+    }
+
+    public void setTaskList(ArrayList<Task> taskList) {
+        this.taskList = taskList;
+    }
+
     private ArrayList<Task> taskList;
     private String username; //used to associate a wedding to a user
 

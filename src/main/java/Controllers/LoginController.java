@@ -63,6 +63,11 @@ public class LoginController implements Initializable
             handleLogin();
             message.setText("Login Successful!");
             User temp = FileWriter.userMap.get(username.getText());
+            if(temp==null)
+            {
+                System.out.println("user in usermap is null");
+                System.out.println(FileWriter.userMap);
+            }
 
             App.setUserLoggedIn(temp);      //sets the user logged in to be the one that logged in now
 

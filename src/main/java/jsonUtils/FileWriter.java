@@ -116,7 +116,9 @@ public class FileWriter
             guests.add((Guest) u);
         else if(u instanceof Organizer)
             organizers.add((Organizer) u);
-        persistUsers();
+        //persistUsers();
+
+        userMap.put(u.getUsername(), u);
     }
 
     public static void addWedd(Wedding wed)
