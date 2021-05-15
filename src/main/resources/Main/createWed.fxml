@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -10,67 +11,85 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CreateWedController">
-   <center>
-      <VBox prefHeight="413.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+
+<VBox alignment="CENTER" stylesheets="@../Image/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CreateWedController">
+   <children>
+      <HBox alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="83.0" prefWidth="400.0">
-               <children>
-                  <Label text="Budget">
+            <BorderPane prefHeight="500.0" prefWidth="400.0">
+               <center>
+                  <VBox prefHeight="413.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="83.0" prefWidth="400.0">
+                           <children>
+                              <Label text="Budget">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Region prefHeight="83.0" prefWidth="77.0" />
+                              <TextField fx:id="budget" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="83.0" prefWidth="400.0">
+                           <children>
+                              <Label text="Location">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Region prefHeight="83.0" prefWidth="77.0" />
+                              <TextField fx:id="location" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="93.0" prefHeight="83.0" prefWidth="400.0">
+                           <children>
+                              <Label text="Max Invites">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Region prefHeight="83.0" prefWidth="77.0" />
+                              <TextField fx:id="maxInvites" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="177.0" prefHeight="83.0" prefWidth="400.0">
+                           <children>
+                              <Label text="Event Date">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Region prefHeight="83.0" prefWidth="35.0" />
+                              <ChoiceBox fx:id="day" prefHeight="25.0" prefWidth="45.0" />
+                              <ChoiceBox fx:id="month" layoutX="226.0" layoutY="39.0" prefHeight="25.0" prefWidth="45.0" />
+                              <ChoiceBox fx:id="year" layoutX="249.0" layoutY="39.0" prefHeight="25.0" prefWidth="45.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button fx:id="create" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="47.0" prefWidth="138.0" text="Create">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <HBox.margin>
+                                    <Insets left="130.0" top="15.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </center>
+               <top>
+                  <Label text="Insert Details" BorderPane.alignment="CENTER">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="31.0" />
                      </font>
                   </Label>
-                  <Region prefHeight="83.0" prefWidth="77.0" />
-                  <TextField fx:id="budget" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="83.0" prefWidth="400.0">
-               <children>
-                  <Label text="Location">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Region prefHeight="83.0" prefWidth="77.0" />
-                  <TextField fx:id="location" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="93.0" prefHeight="83.0" prefWidth="400.0">
-               <children>
-                  <Label text="Max Invites">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Region prefHeight="83.0" prefWidth="77.0" />
-                  <TextField fx:id="maxInvites" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="177.0" prefHeight="83.0" prefWidth="400.0">
-               <children>
-                  <Label text="Event Date">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Region prefHeight="83.0" prefWidth="35.0" />
-                  <ChoiceBox fx:id="day" prefHeight="25.0" prefWidth="45.0" />
-                  <ChoiceBox fx:id="month" layoutX="226.0" layoutY="39.0" prefHeight="25.0" prefWidth="45.0" />
-                  <ChoiceBox fx:id="year" layoutX="249.0" layoutY="39.0" prefHeight="25.0" prefWidth="45.0" />
-               </children>
-            </HBox>
+               </top>
+            </BorderPane>
          </children>
-      </VBox>
-   </center>
-   <top>
-      <Label text="Insert Details" BorderPane.alignment="CENTER">
-         <font>
-            <Font size="31.0" />
-         </font>
-      </Label>
-   </top>
-   <bottom>
-      <Button fx:id="create" mnemonicParsing="false" text="Create" BorderPane.alignment="CENTER" />
-   </bottom>
-</BorderPane>
+      </HBox>
+   </children>
+</VBox>
