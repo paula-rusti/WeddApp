@@ -1,6 +1,7 @@
 package Controllers;
 
 import Main.App;
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,18 +22,19 @@ import java.util.ResourceBundle;
 public class OrgNoWedController implements Initializable
 {
     @FXML
-    private Button manageButton;
+    private JFXButton manageButton;
     @FXML
-    private Button logout;
+    private JFXButton logout;
     @FXML
     private Label name;
     @FXML
     private Label surname;
     @FXML
-    private Button createButton;
+    private JFXButton createButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         createButton.setOnAction(e->createButtonClicked());
         logout.setOnAction(e->logoutButtonClicked());
     }
