@@ -75,7 +75,7 @@ public class LoginController implements Initializable
                 //we need to see if the organizer has created a wedding or not
                 if(FileWriter.wedMap.get(username.getText())==null)
                 {
-                    System.out.println("no wed for username!!!!");
+                    System.out.println("no wed for username!!!!"+(username.getText()));
                     App.getI().changeSceneOnMainStage(SceneManager.SceneType.ORG_NO_WED);
                 }
                 else

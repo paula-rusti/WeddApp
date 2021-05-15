@@ -20,10 +20,13 @@ public class FileWriter
     private static final Path GuestPATH = FilePath.getPathToFile("config", "guests.json");
     private static final Path OrganizerPATH = FilePath.getPathToFile("config", "organizers.json");
     private static final Path WeddingPATH = FilePath.getPathToFile("config", "weddings.json");
+    private static final Path WedListPATH = FilePath.getPathToFile("config", "wedList.json");
 
     public static List<Organizer> organizers;      //the lists are edited in memory and then are written to file
     public static List<Guest> guests;
     public static List<Wedding> weddings;
+    public static List<WedListElem> wedList;
+
     public  static Map<String, User> userMap=new HashMap<>();   //username -> user
     public static Map<String, Wedding> wedMap=new HashMap<>(); //username -> wedding
 
@@ -39,6 +42,9 @@ public class FileWriter
         if (!Files.exists(WeddingPATH)) {
             FileUtils.copyURLToFile(FileWriter.class.getClassLoader().getResource("weddings.json"), WeddingPATH.toFile());
         }
+        if (!Files.exists(WedListPATH)) {
+            FileUtils.copyURLToFile(FileWriter.class.getClassLoader().getResource("wedList.json"), WeddingPATH.toFile());
+        }
 
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -47,6 +53,8 @@ public class FileWriter
         organizers = objectMapper.readValue(OrganizerPATH.toFile(), new TypeReference<List<Organizer>>() {
         });
         weddings = objectMapper.readValue(WeddingPATH.toFile(), new TypeReference<List<Wedding>>() {
+        });
+        wedList = objectMapper.readValue(WedListPATH.toFile(), new TypeReference<List<WedListElem>>() {
         });
 
         //populate the hash map with users
@@ -87,6 +95,16 @@ public class FileWriter
         }
     }
 
+    public static void persistWedList() {    //writes wedLIst to file
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(WedListPATH.toFile(), wedList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void addUser(User u) throws UsernameAlreadyExistsException,CredentialsAreNullException , InvalidPhoneNumberException {
         RegisterValidation.checkCredentialsAreNotNull(u);
         RegisterValidation.checkUserDoesNotAlreadyExist(u.getUsername());
@@ -105,9 +123,14 @@ public class FileWriter
     {
         weddings.add(wed);
         //populate the wedmap with <username, wedding>
-//        for(var temp : weddings)
-//        {
-//            wedMap.put(temp.getUsername(), temp);
-//        }
+        for(var temp : weddings)
+        {
+            wedMap.put(temp.getUsername(), temp);
+        }
+    }
+
+    public static void addWedList(WedListElem x)
+    {
+        wedList.add(x);
     }
 }
