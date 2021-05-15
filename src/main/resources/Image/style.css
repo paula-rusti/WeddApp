@@ -1,0 +1,19 @@
+.root {
+    -fx-background-image:url('image.png');
+    -fx-background-size: cover;
+}
+.jfx-combo-box{
+    -fx-text-inner-color: white;
+    -fx-prompt-text-fill: white;
+}
+.jfx-combo-box .cell{
+    -fx-text-fill: green;
+}
+
+.label{
+    -fx-text-fill: white;
+}
+.button{
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-text-fill: white;
+}
