@@ -33,6 +33,9 @@ public class OrgWedController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
             detailsButton.setOnAction(e -> detailsButtonClicked());
             logoutButton.setOnAction(e->logoutButtonClicked());
+            wedListButton.setOnAction(e -> {
+                App.getI().changeSceneOnMainStage(SceneManager.SceneType.WED_LIST);
+            });
     }
 
     public void setNameLabels(User u){

@@ -79,6 +79,7 @@ public class App extends Application {
 //            System.out.println(pair.getKey() + "=" + pair.getValue());
 //            it.remove();
 //        }
+        System.out.println(FileWriter.weddings);
 
         // Initialize all scenes
         SceneManager.getInstance();
