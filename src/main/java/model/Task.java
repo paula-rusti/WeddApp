@@ -1,24 +1,34 @@
 package model;
 
-
-
 public class Task
 {
     private String name;
-    private String deadline;
+    public  Date deadline;
     private String description;
-    private String status="To Do";
 
+    public enum PROGRESS{
+        IN_PROGRESS,
+        NOT_STARTED,
+        DONE
+    };
+    private PROGRESS taskStatus;
     Task(){}
 
-    public Task(String name, String deadline, String description) {
+    public Task(String name, Date deadline, String description) {
         this.name = name;
         this.deadline = deadline;
         this.description = description;
-      //  this.stage="To Do";
+        //progress=new ComboBox();
+       this.taskStatus=PROGRESS.NOT_STARTED;
 
     }
+    public PROGRESS getTaskStatus() {
+        return taskStatus;
+    }
 
+    public void setTaskStatus(PROGRESS taskStatus) {
+        this.taskStatus = taskStatus;
+    }
     public String getDescription() {
         return description;
     }
@@ -27,21 +37,14 @@ public class Task
         this.description = description;
     }
 
-    public String getDeadline() {
+    public Date getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(String deadline) {
+    public void setDeadline(Date deadline) {
         this.deadline = deadline;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public String getName() {
         return name;

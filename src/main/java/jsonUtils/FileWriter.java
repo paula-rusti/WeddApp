@@ -2,6 +2,7 @@ package jsonUtils;
 import Validation.RegisterValidation;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import exceptions.*;
+import javafx.collections.ObservableList;
 import model.*;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -11,6 +12,7 @@ import org.apache.commons.io.FileUtils;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -126,7 +128,7 @@ public class FileWriter
             guests.add((Guest) u);
         else if(u instanceof Organizer)
             organizers.add((Organizer) u);
-        //persistUsers();
+        persistUsers();
 
         userMap.put(u.getUsername(), u);
     }
@@ -166,5 +168,11 @@ public class FileWriter
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void deleteTask(ArrayList<Task> allTasks, String username) {
+        for(Wedding w: weddings)
+            if(w.getUsername().equals(username))
+                w.setTaskList( allTasks);
     }
 }
