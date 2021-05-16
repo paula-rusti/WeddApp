@@ -6,9 +6,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.util.Pair;
 import jsonUtils.FileWriter;
 import model.WedListElem;
@@ -33,8 +32,10 @@ public class WedList extends ListBaseClass<WedListElem> {
         hBox.setSpacing(30);
 
         Label label = new Label("Name: "+ x.getName());
+        label.setTextFill(Color.web("#783530"));
         Label price = new Label("Price: "+x.getPrice()+"");
         Button delete = new Button("delete");
+        delete.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
 
         hBox.getChildren().add(label);
         hBox.getChildren().addAll(price);

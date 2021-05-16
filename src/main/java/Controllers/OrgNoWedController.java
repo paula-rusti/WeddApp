@@ -48,22 +48,24 @@ public class OrgNoWedController implements Initializable
 
     private void createButtonClicked()
     {
-        Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/Main/createWed.fxml"));
+        App.getI().changeSceneOnMainStage(SceneManager.SceneType.CREATE_WED);
 
-        Parent settingsRoot = null;
-        try {
-            settingsRoot = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException();
-        }
-
-        stage.setTitle("Wedding Details");
-        Scene scene = new Scene(settingsRoot, 600, 600);
-        stage.setScene(scene);
-        stage.show();
+        //        Stage stage = new Stage();
+//        FXMLLoader loader = new FXMLLoader();
+//        loader.setLocation(getClass().getResource("/Main/createWed.fxml"));
+//
+//        Parent settingsRoot = null;
+//        try {
+//            settingsRoot = loader.load();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            throw new RuntimeException();
+//        }
+//
+//        stage.setTitle("Wedding Details");
+//        Scene scene = new Scene(settingsRoot, 600, 600);
+//        stage.setScene(scene);
+//        stage.show();
     }
 
     public void logoutButtonClicked()

@@ -29,21 +29,13 @@ public class GuestMainController implements Initializable
         accButton.setOnAction(e -> accButtonClicked());
     }
 
-    private void invitationsButtonClicked()
+    private void invitationsButtonClicked() //guest clicked on see invites button
     {
         invitationsButton.setOnAction(e->{
 
             App.getI().changeSceneOnMainStage(SceneManager.SceneType.INVITES);
             InvitesListController invitesListController = SceneManager.getInstance().getController(SceneManager.SceneType.INVITES);
-            if ( App.getUserLoggedIn().getRole().equals("organizer") )
-            {
-                invitesListController.initOrgList();
-            }
-            else
-            {
-                invitesListController.initGuestList();
-                invitesListController.makeInvisible();
-            }
+            invitesListController.makeInvisible();
         });
     }
 

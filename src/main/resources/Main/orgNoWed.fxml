@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="436.0" prefWidth="587.0" stylesheets="@../Image/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.OrgNoWedController">
+
+<AnchorPane prefHeight="600.0" prefWidth="600.0" stylesheets="@../Image/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.OrgNoWedController">
    <children>
-      <HBox alignment="CENTER">
+      <HBox alignment="CENTER" layoutX="7.0" layoutY="90.0">
          <children>
             <AnchorPane prefHeight="420.0" prefWidth="585.0">
                <children>
@@ -38,4 +41,4 @@
          </children>
       </HBox>
    </children>
-</VBox>
+</AnchorPane>

@@ -67,6 +67,9 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         this.stage = stage;
         instance = this;
+        this.stage.setTitle("WED APP");
+        //this.stage.setHeight(600);
+        //this.stage.setWidth(600);
 
         //load users from file in the arrays to have them globally available;
         FileWriter.loadDataFromFile();
@@ -93,7 +96,7 @@ public class App extends Application {
         //Choose first appearing scene
         stage.setScene(SceneManager.getInstance().getScene(SceneManager.SceneType.LOGIN));
 
-        stage.setResizable(true);
+        stage.setResizable(false);
         stage.setTitle("WeddApp");
 
         stage.show();

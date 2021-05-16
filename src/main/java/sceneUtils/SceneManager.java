@@ -17,6 +17,7 @@ public class SceneManager
         REGISTER,
         ORG_NO_WED,
         ORG_WED,
+        CREATE_WED,
         GUEST_MAIN,
         WED_DETAILS,
         WED_LIST,
@@ -46,6 +47,7 @@ public class SceneManager
         sceneMap.put(SceneType.TASK_LIST, loadScene("/Main/manageTaskList.fxml"));
         sceneMap.put(SceneType.ADD_TASK, loadScene("/Main/createTask.fxml"));
         sceneMap.put(SceneType.SEE_EVENTS, loadScene("/Main/seeEvents.fxml"));
+        sceneMap.put(SceneType.CREATE_WED, loadScene("/Main/createWed.fxml"));
 
         // Check that all enums have a loaded scene
         for(SceneType s : SceneType.values())

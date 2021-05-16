@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox alignment="CENTER" stylesheets="@../Image/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CreateWedController">
    <children>
       <HBox alignment="CENTER">
@@ -82,12 +81,15 @@
                   </VBox>
                </center>
                <top>
-                  <Label text="Insert Details" BorderPane.alignment="CENTER">
+                  <Label text="Create Wedding" BorderPane.alignment="CENTER">
                      <font>
                         <Font size="31.0" />
                      </font>
                   </Label>
                </top>
+               <bottom>
+                  <Button fx:id="backButton" mnemonicParsing="false" text="Back" BorderPane.alignment="CENTER" />
+               </bottom>
             </BorderPane>
          </children>
       </HBox>

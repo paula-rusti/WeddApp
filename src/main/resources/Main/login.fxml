@@ -1,47 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefWidth="502.0" stylesheets="@../Image/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
+
+<AnchorPane prefHeight="600.0" prefWidth="600.0" stylesheets="@../Image/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
    <children>
-      <HBox alignment="CENTER">
-         <VBox.margin>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
-         </VBox.margin>
+      <VBox alignment="CENTER" prefWidth="502.0" stylesheets="@../Image/style.css">
          <children>
-            <Pane minWidth="-Infinity" prefHeight="386.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
+            <HBox alignment="CENTER">
+               <VBox.margin>
+                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+               </VBox.margin>
                <children>
-                  <TextField fx:id="username" layoutX="135.0" layoutY="112.0" promptText="Username" />
-                  <PasswordField fx:id="password" layoutX="135.0" layoutY="158.0" promptText="Password" />
-                  <JFXComboBox fx:id="role" focusColor="WHITE" layoutX="246.0" layoutY="203.0" prefHeight="26.0" prefWidth="125.0" promptText="Role" stylesheets="@../Image/style.css" unFocusColor="WHITE" />
+                  <Pane minWidth="-Infinity" prefHeight="386.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
+                     <children>
+                        <TextField fx:id="username" layoutX="135.0" layoutY="112.0" promptText="Username" />
+                        <PasswordField fx:id="password" layoutX="135.0" layoutY="158.0" promptText="Password" />
+                        <JFXComboBox fx:id="role" focusColor="WHITE" layoutX="246.0" layoutY="203.0" prefHeight="26.0" prefWidth="125.0" promptText="Role" stylesheets="@../Image/style.css" unFocusColor="WHITE" />
+      
+                        <JFXButton fx:id="registerButton" buttonType="RAISED" layoutX="100.0" layoutY="290.0" prefHeight="26.0" prefWidth="221.0" ripplerFill="WHITE" style="-fx-background-color: transparent;" text="Register" textFill="WHITE">
+      
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </JFXButton>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="88.0" layoutY="26.0" prefHeight="67.0" prefWidth="244.0" style="-fx-background-color: transparent;" text="Login" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="31.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="message" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="346.0" prefHeight="26.0" prefWidth="419.0" style="-fx-background-color: Transparent;" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                        <JFXButton fx:id="loginButton" buttonType="RAISED" layoutX="100.0" layoutY="236.0" prefHeight="26.0" prefWidth="221.0" ripplerFill="WHITE" style="-fx-background-color: transparent;" text="Login" textFill="WHITE">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </JFXButton>
 
-                  <JFXButton fx:id="registerButton" buttonType="RAISED" layoutX="100.0" layoutY="290.0" prefHeight="26.0" prefWidth="221.0" ripplerFill="WHITE" style="-fx-background-color: transparent;" text="Register" textFill="WHITE">
-
-                     <font>
-                        <Font size="19.0" />
-                     </font>
-                  </JFXButton>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="88.0" layoutY="26.0" prefHeight="67.0" prefWidth="244.0" style="-fx-background-color: transparent;" text="Login" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="System Bold" size="31.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="message" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="346.0" prefHeight="26.0" prefWidth="419.0" style="-fx-background-color: Transparent;" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-                  <JFXButton fx:id="loginButton" buttonType="RAISED" layoutX="100.0" layoutY="236.0" prefHeight="26.0" prefWidth="221.0" ripplerFill="WHITE" style="-fx-background-color: transparent;" text="Login" textFill="WHITE">
-                     <font>
-                        <Font size="19.0" />
-                     </font>
-                  </JFXButton>
-
-
-
+                     </children>
+                  </Pane>
                </children>
-            </Pane>
+            </HBox>
          </children>
-      </HBox>
+      </VBox>
    </children>
-</VBox>
+</AnchorPane>
