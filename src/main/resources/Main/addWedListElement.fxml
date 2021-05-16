@@ -35,17 +35,6 @@
                   <TextField fx:id="priceField" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="49.0" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Owner">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Region prefHeight="93.0" prefWidth="55.0" />
-                  <TextField fx:id="ownerField" />
-               </children>
-            </HBox>
             <Button fx:id="createButton" mnemonicParsing="false" text="Create" />
          </children>
       </VBox>

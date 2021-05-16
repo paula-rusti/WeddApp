@@ -18,8 +18,7 @@ public class AddWedListElementController implements Initializable {
     private TextField nameField;
     @FXML
     private TextField priceField;
-    @FXML
-    private TextField ownerField;
+
     @FXML
     private Button createButton;
 
@@ -27,13 +26,19 @@ public class AddWedListElementController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        createButton.setOnAction(e->{
-            WedListElem temp = new WedListElem(App.getUserLoggedIn().getUsername(), nameField.getText(), new Integer(priceField.getText()));
-            FileWriter.addWedList(temp);
-            FileWriter.persistWedList();
+        createButton.setOnAction(e->createButtonClicked());
+    }
 
-            WedListController wedListController = SceneManager.getInstance().getController(SceneManager.SceneType.WED_LIST);
-            wedListController.reloadList();
-        });
+    public void createButtonClicked()
+    {
+        if(nameField.getText().equals("") || priceField.getText().equals(""))
+            return;
+
+        WedListElem temp = new WedListElem(App.getUserLoggedIn().getUsername(), nameField.getText(), new Integer(priceField.getText()));
+        FileWriter.addWedList(temp);
+        FileWriter.persistWedList();
+
+        WedListController wedListController = SceneManager.getInstance().getController(SceneManager.SceneType.WED_LIST);
+        wedListController.reloadList();
     }
 }

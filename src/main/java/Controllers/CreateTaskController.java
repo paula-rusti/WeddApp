@@ -53,6 +53,8 @@ public class CreateTaskController implements Initializable {
         System.out.println("add user"+username);
         LocalDate l=date.getValue();
         //FileWriter.wedMap.get(username).addTask(new Task(name.getText(),date,description.getText()));
+        if(l==null || taskname.getText().equals(""))
+            return;
         FileWriter.addTask(username,new Task(taskname.getText(),new Date(l.getDayOfMonth(),l.getMonthValue(),l.getYear()),description.getText()));
 
         System.out.println(FileWriter.weddings);
