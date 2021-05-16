@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.InvitesListController">
+   <children>
+      <ScrollPane layoutX="38.0" layoutY="76.0" prefHeight="330.0" prefWidth="538.0">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="328.0" prefWidth="539.0">
+               <children>
+                  <VBox fx:id="vbox" layoutY="3.0" prefHeight="310.0" prefWidth="522.0" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <Button fx:id="inviteButton" layoutX="38.0" layoutY="465.0" mnemonicParsing="false" text="Invite">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label fx:id="message" layoutX="38.0" layoutY="524.0" text="message">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="userField" layoutX="150.0" layoutY="472.0" />
+      <Button fx:id="backButton" layoutX="540.0" layoutY="560.0" mnemonicParsing="false" text="Back" />
+      <Label layoutX="217.0" layoutY="14.0" text="Invites List">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

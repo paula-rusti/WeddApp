@@ -11,7 +11,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Paint;
 import jsonUtils.FileWriter;
+import model.Date;
 import model.User;
 import sceneUtils.SceneManager;
 
@@ -20,8 +22,6 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable
 {
-    @FXML
-    private JFXButton backButton;
     @FXML
     private TextField username;
     @FXML
@@ -32,32 +32,68 @@ public class LoginController implements Initializable
     private Label message;
     @FXML
     private JFXButton loginButton;
+    @FXML
+    private JFXButton registerButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        backButton.setOnAction(e -> backButtonClicked());
+        registerButton.setOnAction(e -> registerButtonClicked());
         role.getItems().addAll("Guest", "Organizer");
+
         loginButton.setOnAction(e -> loginButtonClicked());
 
     }
 
-    public void backButtonClicked()
+    public void reset()
     {
         username.clear();
         password.clear();
         message.setText("");
+    }
+
+    public void registerButtonClicked()
+    {
+        reset();
         App.getI().changeSceneOnMainStage(SceneManager.SceneType.REGISTER);
     }
 
     public void loginButtonClicked()
     {
-        System.out.println("here!!!!!!!");
         try {
             handleLogin();
             message.setText("Login Successful!");
             User temp = FileWriter.userMap.get(username.getText());
-            App.setUserLoggedIn(temp);
+            if(temp==null)
+            {
+                System.out.println("user in usermap is null");
+                System.out.println(FileWriter.userMap);
+            }
+
+            App.setUserLoggedIn(temp);      //sets the user logged in to be the one that logged in now
+
+            //here we will load the invites list
+            if(temp.getRole().equals("guest"))
+            {
+                System.out.println("a guest has clicked login");
+                InvitesListController invitesListController = SceneManager.getInstance().getController(SceneManager.SceneType.INVITES);
+                invitesListController.initGuestList();
+                invitesListController.makeInvisible();
+            }
+            else if(temp.getRole().equals("organizer"))
+            {
+                System.out.println("an organizer has clicked login");
+                InvitesListController invitesListController = SceneManager.getInstance().getController(SceneManager.SceneType.INVITES);
+                invitesListController.initOrgList();
+
+                //do this only if the organizer did not create a wedding yet
+                OrgWedController orgWedController = SceneManager.getInstance().getController(SceneManager.SceneType.ORG_WED);
+                if(FileWriter.wedMap.get(temp.getUsername())!=null)
+                {
+                    Date wedDate = FileWriter.wedMap.get(temp.getUsername()).getEventDate();
+                    orgWedController.setWedDate(wedDate);
+                }
+            }
 
             //redirect behavior
             String s = (String)role.getValue();
@@ -68,7 +104,7 @@ public class LoginController implements Initializable
                 //we need to see if the organizer has created a wedding or not
                 if(FileWriter.wedMap.get(username.getText())==null)
                 {
-                    System.out.println("no wed for username");
+                    System.out.println("no wed for username!!!!"+(username.getText()));
                     App.getI().changeSceneOnMainStage(SceneManager.SceneType.ORG_NO_WED);
                 }
                 else
@@ -100,7 +136,7 @@ public class LoginController implements Initializable
                     //System.out.println(guest.getUsername());
                     if(guest.getUsername().equals(username.getText())) //if a user with that username is present in the file
                     {
-                        System.out.println("guest username found");
+                        System.out.println("guest username found!!!!!!!!");
                         if(guest.getPassword().equals(RegisterValidation.encodePassword(guest.getUsername(), password.getText())))
                         {
                             //System.out.println("Login success");
@@ -125,7 +161,7 @@ public class LoginController implements Initializable
                     //System.out.println(org.getUsername());
                     if(org.getUsername().equals(username.getText())) //if a user with that username is present in the file
                     {
-                        System.out.println("guest username found");
+                        System.out.println("org username found");
                         if(org.getPassword().equals(RegisterValidation.encodePassword(org.getUsername(), password.getText())))
                         {
                             //System.out.println("Login success");

@@ -1,21 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.OrgNoWedController">
+
+<AnchorPane prefHeight="600.0" prefWidth="600.0" stylesheets="@../Image/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.OrgNoWedController">
    <children>
-      <Button fx:id="manageButton" layoutX="8.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" text="Manage Account" />
-      <Button fx:id="backButton" layoutX="534.0" layoutY="361.0" mnemonicParsing="false" text="Back" />
-      <VBox layoutX="453.0" layoutY="6.0" prefHeight="63.0" prefWidth="147.0">
+      <HBox alignment="CENTER" layoutX="7.0" layoutY="90.0">
          <children>
-            <Label fx:id="nameLabel" prefHeight="18.0" prefWidth="71.0" text="Name" />
-            <Label prefHeight="18.0" prefWidth="45.0" text="Photo" />
-            <Label prefHeight="18.0" prefWidth="50.0" text="Timer" />
+            <AnchorPane prefHeight="420.0" prefWidth="585.0">
+               <children>
+                  <HBox alignment="CENTER" layoutX="377.0" layoutY="1.0" prefHeight="52.0" prefWidth="201.0">
+                     <children>
+                        <Label fx:id="name" prefHeight="32.0" prefWidth="74.0" style="-fx-background-color: transparent;" text="Label" textFill="#383838">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <Region prefHeight="52.0" prefWidth="39.0" />
+                        <Label fx:id="surname" prefHeight="35.0" prefWidth="79.0" style="-fx-background-color: transparent;" text="Label" textFill="#404040">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <JFXButton fx:id="createButton" layoutX="171.0" layoutY="164.0" prefHeight="91.0" prefWidth="244.0" ripplerFill="#6e6e6e" text="Create Your &#10;  Wedding" textFill="WHITE">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="manageButton" buttonType="RAISED" layoutX="8.0" layoutY="14.0" text="Manage Account" />
+                  <JFXButton fx:id="logout" layoutX="132.0" layoutY="14.0" text="Logout" />
+               </children>
+            </AnchorPane>
          </children>
-      </VBox>
-      <Button fx:id="createButton" layoutX="219.0" layoutY="155.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="162.0" text="Create Your Wedding" />
+      </HBox>
    </children>
 </AnchorPane>
