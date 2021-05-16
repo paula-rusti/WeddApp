@@ -70,7 +70,7 @@ public class RegisterValidation
         }
     }
     public static void checkCredentialsAreNotNull(User u) throws CredentialsAreNullException {
-        if(u.getUsername()=="" || u.getEmail()=="" || u.getTel()=="" || u.getSurname()==""|| u.getName()==""|| u.getPassword()=="")
+        if(u.getUsername().equals("") || u.getEmail().equals("") || u.getTel().equals("") || u.getSurname().equals("")|| u.getName().equals("")|| u.getPassword().equals(""))
             throw new CredentialsAreNullException();
     }
     public static String encodePassword(String salt, String password) {

@@ -1,6 +1,7 @@
 .idea/
 *.iml
 *.iws
+dependency-reduced-pom.xml
 
 # Maven
 log/

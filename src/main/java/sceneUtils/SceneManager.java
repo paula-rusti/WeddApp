@@ -45,8 +45,8 @@ public class SceneManager
         sceneMap.put(SceneType.WED_LIST, loadScene("/Main/WedList.fxml"));
         sceneMap.put(SceneType.INVITES, loadScene("/Main/invitesList.fxml"));
         sceneMap.put(SceneType.TASK_LIST, loadScene("/Main/manageTaskList.fxml"));
-        sceneMap.put(SceneType.ADD_TASK, loadScene("/Main/createTask.fxml"));
-        sceneMap.put(SceneType.SEE_EVENTS, loadScene("/Main/seeEvents.fxml"));
+        sceneMap.put(SceneType.ADD_TASK, loadScene("/Main/CreateTask.fxml"));
+        sceneMap.put(SceneType.SEE_EVENTS, loadScene("/Main/SeeEvents.fxml"));
         sceneMap.put(SceneType.CREATE_WED, loadScene("/Main/createWed.fxml"));
 
         // Check that all enums have a loaded scene
