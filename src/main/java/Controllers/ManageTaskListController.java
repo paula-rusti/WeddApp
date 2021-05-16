@@ -32,7 +32,7 @@ public class ManageTaskListController implements Initializable
         @FXML
         private TableColumn<Task,String> task;
         @FXML
-        private TableColumn<Task,ComboBox> progress;
+        private TableColumn<Task,String> progress;
         @FXML
         private TableColumn<Task,String> description;
         @FXML
@@ -44,24 +44,53 @@ public class ManageTaskListController implements Initializable
         @FXML
         private Button back;
         @FXML
+        private Button update;
+        @FXML
+        private ComboBox newStatus;
+        @FXML
         private Button deleteButton;
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle)
         {
+            newStatus.getItems().addAll("NOT STARTED","IN PROGRESS","DONE");
             back.setOnAction(e -> backButtonClicked());
             addButton.setOnAction(e->addButtonClicked());
             deleteButton.setOnAction(e-> {
                 deleteButtonClicked();
             });
+            update.setOnAction(e->updateClicked());
             task.setCellValueFactory(new PropertyValueFactory<Task,String>("Name"));
-            progress.setCellValueFactory(new PropertyValueFactory<Task,ComboBox>("TaskStatus"));
+            progress.setCellValueFactory(new PropertyValueFactory<Task,String>("TaskStatus"));
             deadline.setCellValueFactory(new PropertyValueFactory<Task,DatePicker>("Deadline"));
             description.setCellValueFactory(new PropertyValueFactory<Task,String>("Description"));
             table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
         }
 
+        private void updateClicked() {
+            ObservableList<Task> selectedRow, allTasks;
+            allTasks=table.getItems();
+            selectedRow = table.getSelectionModel().getSelectedItems();
+            if(selectedRow.isEmpty())
+                deletemessage.setText("Select a row to update it's status");
+            else if(newStatus.getValue().equals(null)){
+                deletemessage.setText("Select a new state");
+            }
+            else {
+                String value = (String) newStatus.getValue();
+                Task task=selectedRow.get(0);
+                task.setTaskStatus(value);
+                allTasks.remove(selectedRow.get(0));
+                allTasks.add(task);
+                ArrayList<Task> list = new ArrayList<>(allTasks);
+                FileWriter.wedMap.get(username).setTaskList(list);
+                FileWriter.deleteTask(list, username);
+                FileWriter.persistWed();
+                newStatus.cancelEdit();
+
+            }
+        }
 
 
         private void deleteButtonClicked()  {
