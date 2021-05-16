@@ -63,6 +63,11 @@ public class LoginController implements Initializable
             handleLogin();
             message.setText("Login Successful!");
             User temp = FileWriter.userMap.get(username.getText());
+            if(temp==null)
+            {
+                System.out.println("user in usermap is null");
+                System.out.println(FileWriter.userMap);
+            }
 
             App.setUserLoggedIn(temp);      //sets the user logged in to be the one that logged in now
 
@@ -75,7 +80,7 @@ public class LoginController implements Initializable
                 //we need to see if the organizer has created a wedding or not
                 if(FileWriter.wedMap.get(username.getText())==null)
                 {
-                    System.out.println("no wed for username!!!!");
+                    System.out.println("no wed for username!!!!"+(username.getText()));
                     App.getI().changeSceneOnMainStage(SceneManager.SceneType.ORG_NO_WED);
                 }
                 else

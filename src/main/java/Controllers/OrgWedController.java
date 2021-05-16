@@ -22,7 +22,7 @@ public class OrgWedController implements Initializable {
     @FXML
     private JFXButton detailsButton;
     @FXML
-    private JFXButton wedListButton;
+    private JFXButton weddListButton;
     @FXML
     private JFXButton taskListButton;
     @FXML
@@ -34,6 +34,23 @@ public class OrgWedController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
             detailsButton.setOnAction(e -> detailsButtonClicked());
             logoutButton.setOnAction(e->logoutButtonClicked());
+            weddListButton.setOnAction(e -> {
+                App.getI().changeSceneOnMainStage(SceneManager.SceneType.WED_LIST);
+            });
+            invitesListButton.setOnAction(e->{
+
+                App.getI().changeSceneOnMainStage(SceneManager.SceneType.INVITES);
+                InvitesListController invitesListController = SceneManager.getInstance().getController(SceneManager.SceneType.INVITES);
+                if ( App.getUserLoggedIn().getRole().equals("organizer") )
+                {
+                    invitesListController.initOrgList();
+                }
+                else
+                {
+                    invitesListController.initGuestList();
+                    //invitesListController.makeInvisible();
+                }
+            });
             taskListButton.setOnAction(e->taskListButtonClicked());
     }
 

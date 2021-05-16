@@ -52,6 +52,8 @@ public class CreateTaskController implements Initializable {
 
     private void saveButtonClicked() {
         handleSaveTask();
+        ManageTaskListController manageTaskListController = SceneManager.getInstance().getController(SceneManager.SceneType.TASK_LIST);
+        manageTaskListController.setUser(App.getUserLoggedIn());
     }
 
     private void handleSaveTask() {
@@ -59,8 +61,10 @@ public class CreateTaskController implements Initializable {
         System.out.println("add user"+username);
         Date temp = new Date(day.getValue(), month.getValue(), year.getValue());
         String date=""+day.getValue()+"."+month.getValue()+"."+year.getValue();
-        FileWriter.wedMap.get(username).addTask(new Task(name.getText(),date,description.getText()));
+
+        //FileWriter.wedMap.get(username).addTask(new Task(name.getText(),date,description.getText()));
         FileWriter.addTask(username,new Task(name.getText(),date,description.getText()));
+
         System.out.println(FileWriter.weddings);
         FileWriter.persistWed();
 
