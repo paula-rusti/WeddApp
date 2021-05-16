@@ -44,7 +44,7 @@ public class OrgInvitesList extends ListBaseClass<Invitation>
 
 
         delete.setOnAction(e -> {
-            System.out.println("manage invite pressed!!!");
+            System.out.println("delete invite pressed!!!");
             InvitesListController invitesListController = SceneManager.getInstance().getController(SceneManager.SceneType.INVITES);
             invitesListController.getListOrg().remove(x);
             FileWriter.invites.remove(x);

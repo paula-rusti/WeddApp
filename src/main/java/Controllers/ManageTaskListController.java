@@ -79,8 +79,6 @@ public class ManageTaskListController implements Initializable
 
         }
 
-
-
         public void setUser(User u){
             if(u==null)
                 return;

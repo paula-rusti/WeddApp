@@ -13,6 +13,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Paint;
 import jsonUtils.FileWriter;
+import model.Date;
 import model.User;
 import sceneUtils.SceneManager;
 
@@ -70,6 +71,29 @@ public class LoginController implements Initializable
             }
 
             App.setUserLoggedIn(temp);      //sets the user logged in to be the one that logged in now
+
+            //here we will load the invites list
+            if(temp.getRole().equals("guest"))
+            {
+                System.out.println("a guest has clicked login");
+                InvitesListController invitesListController = SceneManager.getInstance().getController(SceneManager.SceneType.INVITES);
+                invitesListController.initGuestList();
+                invitesListController.makeInvisible();
+            }
+            else if(temp.getRole().equals("organizer"))
+            {
+                System.out.println("an organizer has clicked login");
+                InvitesListController invitesListController = SceneManager.getInstance().getController(SceneManager.SceneType.INVITES);
+                invitesListController.initOrgList();
+
+                //do this only if the organizer did not create a wedding yet
+                OrgWedController orgWedController = SceneManager.getInstance().getController(SceneManager.SceneType.ORG_WED);
+                if(FileWriter.wedMap.get(temp.getUsername())!=null)
+                {
+                    Date wedDate = FileWriter.wedMap.get(temp.getUsername()).getEventDate();
+                    orgWedController.setWedDate(wedDate);
+                }
+            }
 
             //redirect behavior
             String s = (String)role.getValue();

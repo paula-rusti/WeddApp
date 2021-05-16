@@ -13,6 +13,7 @@ import model.Wedding;
 import sceneUtils.SceneManager;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.ResourceBundle;
 
@@ -24,12 +25,9 @@ public class ChangeDetailsController implements Initializable {
     private TextField location;
     @FXML
     private TextField maxInvites;
+
     @FXML
-    private ChoiceBox<Integer> day;
-    @FXML
-    private ChoiceBox<Integer> month;
-    @FXML
-    private ChoiceBox<Integer> year;
+    private DatePicker datePicker;
 
     @FXML
     private Button save;
@@ -39,12 +37,6 @@ public class ChangeDetailsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        day.setItems(FXCollections.observableArrayList(1,2,3,4,5,6,7,8,9,10));
-        month.setItems(FXCollections.observableArrayList(1,2,3,4,5,6,7,8,9,10,11,12));
-        year.setItems(FXCollections.observableArrayList(2021,2022,2023,2024,2025));
-
-        day.setTooltip(new Tooltip("select day"));
-
         save.setOnAction(e->saveButtonClicked());
         back.setOnAction(e->backButtonClicked());
     }
@@ -74,9 +66,7 @@ public class ChangeDetailsController implements Initializable {
         budget.setText(temp.getBudget()+"");
         location.setText(temp.getLocation()+"");
         maxInvites.setText(temp.getMaxInvites()+"");
-        day.setValue(temp.getEventDate().day);
-        month.setValue(temp.getEventDate().month);
-        year.setValue(temp.getEventDate().year);
+
     }
 
     private void handleChangeWedd() throws WeddingAlreadyExist
@@ -94,7 +84,9 @@ public class ChangeDetailsController implements Initializable {
         }
 
         //create the new wedding
-        Date temp = new Date(day.getValue(), month.getValue(), year.getValue());
+        LocalDate localDate = datePicker.getValue();
+        Date temp = new Date(localDate.getDayOfMonth(), localDate.getMonthValue(), localDate.getYear());
+        
         int bud=Integer.parseInt(budget.getText());
         int mI=Integer.parseInt(maxInvites.getText());
 

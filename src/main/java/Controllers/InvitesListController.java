@@ -15,6 +15,8 @@ import model.Invitation;
 import sceneUtils.SceneManager;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class InvitesListController implements Initializable {
@@ -48,17 +50,32 @@ public class InvitesListController implements Initializable {
 
     public void initOrgList()
     {
-        listOrg = new OrgInvitesList(FileWriter.invites, vbox);
+        String organizer = App.getUserLoggedIn().getUsername(); //we assume that if this function is called, the user logged in is an organizer
+        List<Invitation> organizerInvites = new ArrayList<>();
+        for(var temp : FileWriter.invites)
+        {
+            if(temp.getSource().equals(organizer))
+                organizerInvites.add(temp);
+        }
+        listOrg = new OrgInvitesList(organizerInvites, vbox);
     }
 
     public void initGuestList()
     {
-        listGuest = new GuestInvitesList(FileWriter.invites, vbox);
+        String guest = App.getUserLoggedIn().getUsername(); //we assume that if this function is called, the user logged in is a guest
+        List<Invitation> guestInvites = new ArrayList<>();
+        for(var temp : FileWriter.invites)
+        {
+            if(temp.getDest().equals(guest))
+                guestInvites.add(temp);
+        }
+        listGuest = new GuestInvitesList(guestInvites, vbox);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //list = new OrgInvitesList(FileWriter.invites, vbox);
+        message.setVisible(false);
         inviteButton.setOnAction(e->inviteButtonClicked());
         backButton.setOnAction(e->{
             if(App.getUserLoggedIn().getRole().equals("organizer"))
@@ -78,7 +95,8 @@ public class InvitesListController implements Initializable {
         {
             if(!FileWriter.userMap.get(username).getRole().equals("guest"))
             {
-                System.out.println(username + " is " + FileWriter.userMap.get(username).getRole());
+                //System.out.println(username + " is " + FileWriter.userMap.get(username).getRole());
+                message.setText(username + " is " + FileWriter.userMap.get(username).getRole());
             }
             else    //the user is a registered guest
             {
@@ -87,11 +105,13 @@ public class InvitesListController implements Initializable {
                 {
                     if(temp.getSource().equals(organizer))
                     {
-                        System.out.println("The user "+username+" already has an invitation from "+organizer);
+                        //System.out.println("The user "+username+" already has an invitation from "+organizer);
+                        message.setVisible(true);
+                        message.setText("The user "+username+" already has an invitation from "+organizer);
                         return;
                     }
                 }
-                System.out.println("we can send the invite");
+                //System.out.println("we can send the invite");
                 FileWriter.addInvite(new Invitation(organizer, username));  //update list
                 FileWriter.persistInvites(); //write the invites in file
             }
@@ -104,5 +124,12 @@ public class InvitesListController implements Initializable {
         inviteButton.setVisible(false);
         message.setVisible(false);
         userField.setVisible(false);
+    }
+
+    public void makeVisible() //reuse this scene for the guest invites
+    {
+        inviteButton.setVisible(true);
+        message.setVisible(true);
+        userField.setVisible(true);
     }
 }

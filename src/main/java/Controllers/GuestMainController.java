@@ -14,19 +14,12 @@ public class GuestMainController implements Initializable
     @FXML
     private Button invitationsButton;
     @FXML
-    private Button eventsButton;
-    @FXML
     private Button logoutButton;
-    @FXML
-    private Button accButton;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         invitationsButton.setOnAction(e -> invitationsButtonClicked());
-        eventsButton.setOnAction(e -> eventsButtonClicked());
         logoutButton.setOnAction(e -> logoutButtonClicked());
-        accButton.setOnAction(e -> accButtonClicked());
     }
 
     private void invitationsButtonClicked() //guest clicked on see invites button
@@ -34,14 +27,8 @@ public class GuestMainController implements Initializable
         invitationsButton.setOnAction(e->{
 
             App.getI().changeSceneOnMainStage(SceneManager.SceneType.INVITES);
-            InvitesListController invitesListController = SceneManager.getInstance().getController(SceneManager.SceneType.INVITES);
-            invitesListController.makeInvisible();
+
         });
-    }
-
-    private void eventsButtonClicked()
-    {
-
     }
 
     private void logoutButtonClicked()
@@ -51,10 +38,5 @@ public class GuestMainController implements Initializable
 
         LoginController log = SceneManager.getInstance().getController(SceneManager.SceneType.LOGIN);
         log.reset();
-    }
-
-    private void accButtonClicked()
-    {
-
     }
 }

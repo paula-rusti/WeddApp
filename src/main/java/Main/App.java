@@ -1,9 +1,6 @@
 package Main;
 
-import Controllers.ChangeDetailsController;
-import Controllers.OrgNoWedController;
-import Controllers.OrgWedController;
-import Controllers.ManageTaskListController;
+import Controllers.*;
 import javafx.application.Application;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
@@ -36,7 +33,11 @@ public class App extends Application {
         App.userLoggedIn = userLoggedIn;
 
         if(userLoggedIn==null)
+        {
+            InvitesListController invitesListController = SceneManager.getInstance().getController(SceneManager.SceneType.INVITES);
+            invitesListController.makeVisible();
             return;
+        }
 
         if(userLoggedIn.getRole().equals("organizer"))
         {

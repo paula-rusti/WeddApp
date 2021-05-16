@@ -5,7 +5,9 @@ import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.text.Text;
+import model.Date;
 import model.User;
 import sceneUtils.SceneManager;
 
@@ -29,6 +31,8 @@ public class OrgWedController implements Initializable {
     private JFXButton invitesListButton;
     @FXML
     private Button logoutButton;
+    @FXML
+    private Label wedDate;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -41,15 +45,7 @@ public class OrgWedController implements Initializable {
 
                 App.getI().changeSceneOnMainStage(SceneManager.SceneType.INVITES);
                 InvitesListController invitesListController = SceneManager.getInstance().getController(SceneManager.SceneType.INVITES);
-                if ( App.getUserLoggedIn().getRole().equals("organizer") )
-                {
-                    invitesListController.initOrgList();
-                }
-                else
-                {
-                    invitesListController.initGuestList();
 
-                }
             });
             taskListButton.setOnAction(e->taskListButtonClicked());
     }
@@ -75,5 +71,10 @@ public class OrgWedController implements Initializable {
 
         LoginController log = SceneManager.getInstance().getController(SceneManager.SceneType.LOGIN);
         log.reset();
+    }
+
+    public void setWedDate(Date t)
+    {
+        wedDate.setText(t.toString());
     }
 }

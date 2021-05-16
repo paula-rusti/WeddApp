@@ -5,16 +5,14 @@ import exceptions.WeddingAlreadyExist;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import jsonUtils.FileWriter;
 import model.Date;
 import model.Wedding;
 import sceneUtils.SceneManager;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class CreateWedController implements Initializable {
@@ -29,11 +27,14 @@ public class CreateWedController implements Initializable {
     private Button backButton;
 
     @FXML
-    private ChoiceBox<Integer> day;
-    @FXML
-    private ChoiceBox<Integer> month;
-    @FXML
-    private ChoiceBox<Integer> year;
+    private DatePicker datePicker;
+
+//    @FXML
+//    private ChoiceBox<Integer> day;
+//    @FXML
+//    private ChoiceBox<Integer> month;
+//    @FXML
+//    private ChoiceBox<Integer> year;
 
     @FXML
     private Button create;
@@ -43,11 +44,11 @@ public class CreateWedController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        day.setItems(FXCollections.observableArrayList(1,2,3,4,5,6,7,8,9,10));
-        month.setItems(FXCollections.observableArrayList(1,2,3,4,5,6,7,8,9,10,11,12));
-        year.setItems(FXCollections.observableArrayList(2021,2022,2023,2024,2025));
+//        day.setItems(FXCollections.observableArrayList(1,2,3,4,5,6,7,8,9,10));
+//        month.setItems(FXCollections.observableArrayList(1,2,3,4,5,6,7,8,9,10,11,12));
+//        year.setItems(FXCollections.observableArrayList(2021,2022,2023,2024,2025));
 
-        day.setTooltip(new Tooltip("select day"));
+//        day.setTooltip(new Tooltip("select day"));
         create.setOnAction(e->createButtonClicked());
 
         create.setStyle(IDLE_BUTTON_STYLE);
@@ -92,11 +93,14 @@ public class CreateWedController implements Initializable {
         //else we create the object that will be stored in the file
         if(budget.getText()==null || maxInvites.getText()==null || location.getText()==null)
             return false;
-        if(day.getValue()==null || month.getValue()==null || year.getValue()==null)
-            return false;
 
+//
+//        if(day.getValue()==null || month.getValue()==null || year.getValue()==null)
+//            return false;
 
-        Date temp = new Date(day.getValue(), month.getValue(), year.getValue());
+        LocalDate localDate = datePicker.getValue();
+        Date temp = new Date(localDate.getDayOfMonth(), localDate.getMonthValue(), localDate.getYear());
+
         int bud=Integer.parseInt(budget.getText());
         int mI=Integer.parseInt(maxInvites.getText());
 
