@@ -48,6 +48,7 @@ public class OrgWedController implements Initializable {
                 else
                 {
                     invitesListController.initGuestList();
+                    //invitesListController.makeInvisible();
                 }
             });
             taskListButton.setOnAction(e->taskListButtonClicked());

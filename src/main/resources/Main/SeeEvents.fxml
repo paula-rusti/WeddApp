@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SeeEventsController">
+   <children>
+      <Label layoutX="261.0" layoutY="14.0" text="See Events List" />
+      <ScrollPane layoutX="96.0" layoutY="59.0" prefHeight="282.0" prefWidth="407.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="267.0" prefWidth="406.0">
+               <children>
+                  <VBox fx:id="vbox" alignment="CENTER" layoutX="-2.0" layoutY="1.0" prefHeight="266.0" prefWidth="396.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
