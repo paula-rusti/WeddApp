@@ -5,13 +5,7 @@ public class Task
     private String name;
     public  Date deadline;
     private String description;
-
-    public enum PROGRESS{
-        IN_PROGRESS,
-        NOT_STARTED,
-        DONE
-    };
-    private PROGRESS taskStatus;
+    private String taskStatus;
     Task(){}
 
     public Task(String name, Date deadline, String description) {
@@ -19,14 +13,14 @@ public class Task
         this.deadline = deadline;
         this.description = description;
         //progress=new ComboBox();
-       this.taskStatus=PROGRESS.NOT_STARTED;
+       this.taskStatus="Not started";
 
     }
-    public PROGRESS getTaskStatus() {
+    public String getTaskStatus() {
         return taskStatus;
     }
 
-    public void setTaskStatus(PROGRESS taskStatus) {
+    public void setTaskStatus(String taskStatus) {
         this.taskStatus = taskStatus;
     }
     public String getDescription() {
